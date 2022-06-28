@@ -1,0 +1,12 @@
+.home-desktop{
+    &__root{
+        display: flex;
+        overflow-x: scroll;
+        height: 100vh;
+    }
+    &__section{
+        height: 100%;
+        width: 49rem;
+    }
+    
+}

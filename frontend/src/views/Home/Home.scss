@@ -1,0 +1,9 @@
+.home {
+  &__root {
+    @include general-div;
+  }
+  &__welcome {
+    font-size: 3rem;
+    animation: go-top normal forwards 3000ms;
+  }
+}

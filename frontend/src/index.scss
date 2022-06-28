@@ -1,0 +1,21 @@
+@import "./styles/animations/fadeIn.scss";
+@import "./styles/animations/fadeOut.scss";
+@import "./styles/animations/underlineMovement.scss";
+@import "./styles/animations/goTop.scss";
+@import "./styles/mixins/generalDiv.scss";
+@import "./styles/variables/colors.scss";
+@import "./components/Footer/Footer.scss";
+@import "./components/HeaderDesktop/HeaderDesktop.scss";
+@import "./components/HomeDesktop/HomeDesktop.scss";
+@import "./components/HomeMobile/HomeMobile.scss";
+@import "./components/Navbar/Navbar.scss";
+@import "./views/Home/Home.scss";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Rubik', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
