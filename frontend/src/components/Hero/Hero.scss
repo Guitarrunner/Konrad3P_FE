@@ -1,0 +1,77 @@
+.hero{
+    &__root{
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+    &__img-container{
+        display: flex;
+        width: 70%;
+        transition: all ease-in-out 300ms;
+        overflow: hidden;
+        @media (min-width: 760px) {
+            width: 80%;
+        }
+        &__img{
+            width: 100%;
+            min-width:1400px;
+            min-height: 1000px;
+        }
+    }
+    &__container{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        transition: all ease-in-out 300ms;
+        @media (min-width: 760px) {
+            width: 20%;
+        }
+        align-items: center;
+        color: $second-color;
+        &__data{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 20%;
+            width: 90%;
+            margin-top: 3rem;
+        }
+        &__next{
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            width: 100%;
+            margin-top: 2rem;
+            height: calc(60% - 6rem - 5rem);
+            &__btn{
+                color: $second-color;
+                border: 0.03rem solid $second-color;
+                display: flex;
+                text-align: center;
+                justify-content: center;
+                align-items: baseline;
+                text-decoration: none;
+                line-height: 3.8rem;
+                font-size: 3rem;
+                width: 5rem;
+                border-radius: 50%;
+                height: 5rem;
+                margin-bottom: 3rem;
+                transition: all ease-in-out 300ms;
+                &:hover
+                {
+                    background-color: $second-color;
+                    color: $main-color;
+                }
+                &:focus
+                {
+                    background-color: $second-color;
+                    color: $main-color;
+                }
+            }
+        }
+    }
+
+}

@@ -1,17 +1,20 @@
-
+import { useRef } from "react";
 import HeaderDesktop from "../HeaderDesktop/HeaderDesktop";
+import Hero from "../Hero/Hero";
 function HomeDesktop(){
     const base = "home-desktop";
-    return(
 
-       
-        <main className={`${base}__root`}>
-             <HeaderDesktop/>
-            <section className={`${base}__section`} id="hero">Hero</section>
-            <section className={`${base}__section`} id="info">Info</section>
-            <section className={`${base}__section`} id="services">serv</section>
-            <section className={`${base}__section`} id="partners">sfdsf</section>
-        </main>
+  const elementRef = useRef()
+    return(
+        <>
+        <HeaderDesktop elementRef={elementRef}/>
+            <main ref={elementRef} className={`${base}__root`}>
+                <section className={`${base}__section--first`} id="hero"><Hero elementRef={elementRef}/></section>
+                <section className={`${base}__section`} id="info">Info</section>
+                <section className={`${base}__section`} id="services">serv</section>
+                <section className={`${base}__section`} id="partners">sfdsf</section>
+            </main>
+        </>
     )
 }
 

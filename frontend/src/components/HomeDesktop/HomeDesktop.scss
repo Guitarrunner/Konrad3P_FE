@@ -1,12 +1,35 @@
 .home-desktop{
     &__root{
-        display: flex;
-        overflow-x: scroll;
+        background-color: $main-color;
         height: 100vh;
+        max-height: 100vh;
+        width: 100vw;
+        color: $second-color;
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        &::-webkit-scrollbar{
+            display: none;
+        }
     }
     &__section{
-        height: 100%;
-        width: 49rem;
+        flex-shrink: 0;
+        width: calc(100vw - 15rem);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    &--first{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        width: calc(100vw - 15rem);
+        height: 100vh;
+        margin-left: 15rem;
+    }
+    
     }
     
 }

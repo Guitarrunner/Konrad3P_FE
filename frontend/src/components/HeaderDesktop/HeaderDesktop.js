@@ -1,29 +1,39 @@
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-function HeaderDesktop() {
+function HeaderDesktop(props) {
   const base = "header-desktop";
+  const {elementRef} = props;
+
+  const scrollWithOffset = (number) => {
+    elementRef.current.scroll({
+      top: 0,
+      left: (elementRef.current.offsetWidth-240)*number,
+      behavior: 'smooth'
+    }); 
+  }
+
   return (
     <header className={`${base}__root`}>
       <div className={`${base}__container`}>
         <h2 className={`${base}__container__title`}>Le Bank</h2>
         <ol className={`${base}__container__list`}>
           <li className={`${base}__element`}>
-            <HashLink className={`${base}__element__link`} to="#hero">
+            <HashLink className={`${base}__element__link`} to="#hero" smooth scroll={()=> scrollWithOffset(0)}>
               Home
             </HashLink>
           </li>
           <li className={`${base}__element`}>
-            <HashLink className={`${base}__element__link`} to="#info">
+            <HashLink className={`${base}__element__link`} to="#info" smooth scroll={()=> scrollWithOffset(1)}>
               About us
             </HashLink>
           </li>
           <li className={`${base}__element`}>
-            <HashLink className={`${base}__element__link`} to="#services">
+            <HashLink className={`${base}__element__link`} to="#services" smooth scroll={()=> scrollWithOffset(2)}>
               Our services
             </HashLink>
           </li>
           <li className={`${base}__element`}>
-            <HashLink className={`${base}__element__link`} to="#partners">
+            <HashLink className={`${base}__element__link`} to="#partners" smooth scroll={()=> scrollWithOffset(3)}>
               Our partners
             </HashLink>
           </li>

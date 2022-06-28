@@ -35,7 +35,7 @@ function Home(){
         ?
         homeDisplay = <main className={`${base}__root`}> <HomeMobile/></main>
         :
-        homeDisplay = <main className={`${base}__root`}> <HomeDesktop/></main>
+        homeDisplay = <HomeDesktop/>
     }
 
     return homeDisplay;
