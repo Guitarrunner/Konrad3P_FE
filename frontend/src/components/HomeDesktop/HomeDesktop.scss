@@ -9,9 +9,10 @@
         flex-direction: row;
         overflow-x: scroll;
         overflow-y: hidden;
-        &::-webkit-scrollbar{
-            display: none;
-        }
+        animation: fade-in 600ms normal forwards;
+        // &::-webkit-scrollbar{
+        //     display: none;
+        // }
     }
     &__section{
         flex-shrink: 0;

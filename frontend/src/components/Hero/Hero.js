@@ -9,10 +9,12 @@ function Hero(props){
     return(
     <div className={`${base}__root`}>
         <div className={`${base}__img-container`}>
+            <h1 className={`${base}__img-container__title`}>This is the new bank experience</h1>
             <img className={`${base}__img-container__img`} alt="Bank Image" src={heroImage}/>
         </div>
         <div className={`${base}__container`}>
             <div className={`${base}__container__data`}>
+               
                 <img className={`${base}__container__data__img`} alt="Associates" src={bankLogo} />
                 <h2 className={`${base}__container__data__info`}>+450k</h2>
                 <p className={`${base}__container__data__desc`}>Associates</p>
