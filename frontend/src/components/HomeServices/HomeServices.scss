@@ -66,8 +66,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                transition: ease-out;
-                // animation: fade-out 750ms forwards normal;
+                transition: all ease-out 500ms;
                 &--services{
                     text-align: center;
                     width: 80%;

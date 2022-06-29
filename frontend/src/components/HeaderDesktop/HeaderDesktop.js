@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 function HeaderDesktop(props) {
   const base = "header-desktop";
-  const {elementRef} = props;
+  const {elementRef, navbarRef} = props;
 
   const scrollWithOffset = (number) => {
     elementRef.current.scroll({
@@ -13,7 +13,7 @@ function HeaderDesktop(props) {
   }
 
   return (
-    <header className={`${base}__root`}>
+    <header ref={navbarRef} className={`${base}__root`}>
       <div className={`${base}__container`}>
         <h2 className={`${base}__container__title`}>Universal Bank</h2>
         <ol className={`${base}__container__list`}>

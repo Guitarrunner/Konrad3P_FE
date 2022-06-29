@@ -8,12 +8,17 @@
         display: flex;
         flex-direction: row;
         overflow-x: scroll;
-        overflow-y: hidden;
+        overflow-y: scroll;
         animation: fade-in 600ms normal forwards;
         scroll-behavior: smooth;
-        &::-webkit-scrollbar{
-            display: none;
+        
+        @media (min-height: 40rem) {
+            overflow-y: hidden;
+            &::-webkit-scrollbar{
+                display: none;
+            }
         }
+
     }
     &__section{
         @include section;
