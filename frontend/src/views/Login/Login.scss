@@ -1,0 +1,156 @@
+.login{
+    &__root{
+        @include root;
+        height: 100vh;
+        background-color: $second-color;
+        overflow: hidden;
+    }
+    &__create-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        height: 50%;
+        margin-top: -20%;
+        &__title{
+            font-size: 3rem;
+            color: $main-color;
+        }
+        &__desc{
+            color: $main-color;
+            text-align: center;
+        }
+        &__create{
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            width: 40%;
+            height: 4rem;
+            border-radius: 2rem;
+            background-color: $main-color;
+            color: $second-color;
+            transition: all ease-in-out 300ms;
+            &:hover{
+                transform: scale(1.1);
+            }
+            &:active{
+                opacity: 0.4;
+            }
+        }
+    }
+    
+    &__section{
+        background-color: $main-color;
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-bottom-left-radius: 1rem;
+        border-top-left-radius: 1rem;
+        &--white{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-bottom-right-radius: 1rem;
+            border-top-right-radius: 1rem;
+            background-color: $second-color;
+            width: 50%;
+            height: 100%;
+        }
+    }
+    &__wrapper{
+        animation: slide-up 500ms forwards normal;
+        display: flex;
+        width: 80%;
+        min-width: 700px;
+        min-height: 700px;
+        background-color: $main-color;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        border-radius: 2rem;
+        &__title{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 70%;
+            padding: 1.5rem;
+            border-bottom: 0.03rem solid $second-color;
+        }
+        &__form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            width: 90%;
+            height: 50%;
+            &__container{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                margin-bottom: 1rem;
+                &__label{
+                    width: 60%;
+                    text-align: left;
+                    font-size: 1rem;
+                    margin-bottom:1rem
+                }
+                &__input{
+                    outline: none;
+                    border: none;
+                    line-height: 2rem;
+                    border-radius: 1.5rem;
+                    padding: 0.5rem;
+                    width: 60%;
+                }
+                &__password{
+                    width: 60%;
+                    position: relative;
+                    &__input{
+                        outline: none;
+                        border: none;
+                        line-height: 2rem;
+                        border-radius: 1.5rem;
+                        padding: 0.5rem;
+                        width: 100%;
+                    }
+                    
+                    &__view{
+                        position: absolute;
+                        left: 90%;
+                        top: calc( 100% * 0.5 - 0.5rem);
+                    }
+                }
+                
+            }
+            
+            &__submit-container{
+                width: 100%;
+                height: 20%;
+                &__submit{
+                    margin-top: 3rem;
+                    box-shadow: rgba(255, 255, 255, 0.2) 0px 60px 40px -7px;                    border-radius: 1rem;
+                    border:none;
+                    background-color: $second-color;
+                    width: 40%;
+                    height: 3rem;
+                    transition: all ease-in-out 300ms;
+                    &:hover{
+                        transform: scale(1.1);
+                    }
+                    &:active{
+                        opacity: 0.4;
+                    }
+                }
+            }
+        }
+    }
+}

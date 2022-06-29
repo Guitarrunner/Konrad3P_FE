@@ -6,6 +6,7 @@ import App from "./App";
 import ScrollToTop from "./utils/ScrollToTop";
 import Home from "./views/Home/Home";
 import { MainProvider } from "./context/mainContext";
+import Login from "./views/Login/Login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,6 +17,7 @@ root.render(
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<App />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </MainProvider>

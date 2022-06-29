@@ -39,7 +39,7 @@ function HeaderDesktop(props) {
           </li>
         </ol>
         <div className={`${base}__container__button`}>
-          <Link to="/log" className={`${base}__container__button__log`}>Enter bank</Link>
+          <Link to="/login" className={`${base}__container__button__log`}>Enter bank</Link>
         </div>
       </div>
     </header>

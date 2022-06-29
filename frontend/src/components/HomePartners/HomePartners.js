@@ -9,13 +9,13 @@ function HomePartners(){
             <div className={`${base}__wrapper`}>
                 <h2 className={`${base}__wrapper__title`}>Our trusted partners</h2>
                 <div className={`${base}__wrapper__img-container`}>
-                    <img alt="Partner 1" src={mastercard} className={`${base}__wrapper__img-container__img`}/>
+                    <img tabIndex="2" alt="Partner 1" src={mastercard} className={`${base}__wrapper__img-container__img`}/>
                 </div>
                 <div className={`${base}__wrapper__img-container`}>
-                    <img alt="Partner 1" src={sinpe} className={`${base}__wrapper__img-container__img`}/>
+                    <img tabIndex="2" alt="Partner 1" src={sinpe} className={`${base}__wrapper__img-container__img`}/>
                 </div>
                 <div className={`${base}__wrapper__img-container`}>
-                    <img alt="Partner 1" src={konrad} className={`${base}__wrapper__img-container__img`}/>
+                    <img tabIndex="2" alt="Partner 1" src={konrad} className={`${base}__wrapper__img-container__img`}/>
                 </div>
             </div>
         </div>

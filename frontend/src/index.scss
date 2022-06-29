@@ -6,6 +6,7 @@
 @import "./styles/animations/goTop.scss";
 @import "./styles/mixins/generalDiv.scss";
 @import "./styles/mixins/section.scss";
+@import "./styles/mixins/root.scss";
 @import "./styles/variables/colors.scss";
 @import "./components/Footer/Footer.scss";
 @import "./components/HeaderDesktop/HeaderDesktop.scss";
@@ -18,6 +19,7 @@
 @import "./components/HomePartners/HomePartners.scss";
 @import "./components/Navbar/Navbar.scss";
 @import "./views/Home/Home.scss";
+@import "./views/Login/Login.scss";
 
 body {
   margin: 0;
