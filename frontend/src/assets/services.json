@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Public Services",
+    "services": [
+      "Water",
+      "Electricity",
+      "Phone credit",
+      "Ip credit",
+      "Internet",
+      "AYA",
+      "Phone",
+      "Distributor Credit"
+    ]
+  },
+  {
+    "name": "CSSS",
+    "services": [
+      "Employer worker fees",
+      "Voluntary insured / migrant",
+      "Independent worker"
+    ]
+  },
+  {
+    "name": "Insurance",
+    "services": [
+      "I.N.S.",
+      "MAPFRE",
+      "National Teaching",
+      "Oceanic Insurance S.A."
+    ]
+  },
+  {
+    "name": "Donations",
+    "services": [
+      "Enlace Channel 23",
+      "Dehvi Foundation",
+      "Renacer Association",
+      "Stereo vision",
+      "Cristo Vision Channel 31"
+    ]
+  },
+  {
+    "name": "Ecologic",
+    "services": ["Ecological Label", "Munic.de San Jose Carbon Neutral"]
+  },
+  {
+    "name": "Education",
+    "services": ["Schools", "Universities", "Baccalaureate tests"]
+  },
+  {
+    "name": "Others",
+    "services": [
+      "Taxes",
+      "Municipalities",
+      "Parking meters",
+      "Safety Pay / Free Market",
+      "Road Safety and CTP",
+      "subscriptions",
+      "Digital Auction",
+      "Transportation",
+      "Cable and Satellite TV",
+      "Catalog sales"
+    ]
+  }
+]

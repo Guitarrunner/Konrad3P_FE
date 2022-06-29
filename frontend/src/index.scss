@@ -1,5 +1,6 @@
 @import "./styles/animations/fadeIn.scss";
 @import "./styles/animations/fadeOut.scss";
+@import "./styles/animations/slideUp.scss";
 @import "./styles/animations/underlineMovement.scss";
 @import "./styles/animations/goTop.scss";
 @import "./styles/mixins/generalDiv.scss";
@@ -9,9 +10,11 @@
 @import "./components/HeaderDesktop/HeaderDesktop.scss";
 @import "./components/Hero/Hero.scss";
 @import "./components/HomeDesktop/HomeDesktop.scss";
+@import "./components/HomeFooter/HomeFooter.scss";
 @import "./components/HomeInfo/HomeInfo.scss";
 @import "./components/HomeMobile/HomeMobile.scss";
 @import "./components/HomeServices/HomeServices.scss";
+@import "./components/HomePartners/HomePartners.scss";
 @import "./components/Navbar/Navbar.scss";
 @import "./views/Home/Home.scss";
 
