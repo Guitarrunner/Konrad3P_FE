@@ -15,7 +15,7 @@ function HeaderDesktop(props) {
   return (
     <header className={`${base}__root`}>
       <div className={`${base}__container`}>
-        <h2 className={`${base}__container__title`}>Le Bank</h2>
+        <h2 className={`${base}__container__title`}>Universal Bank</h2>
         <ol className={`${base}__container__list`}>
           <li className={`${base}__element`}>
             <HashLink className={`${base}__element__link`} to="#hero" smooth scroll={()=> scrollWithOffset(0)}>

@@ -3,12 +3,15 @@
 @import "./styles/animations/underlineMovement.scss";
 @import "./styles/animations/goTop.scss";
 @import "./styles/mixins/generalDiv.scss";
+@import "./styles/mixins/section.scss";
 @import "./styles/variables/colors.scss";
 @import "./components/Footer/Footer.scss";
 @import "./components/HeaderDesktop/HeaderDesktop.scss";
 @import "./components/Hero/Hero.scss";
 @import "./components/HomeDesktop/HomeDesktop.scss";
+@import "./components/HomeInfo/HomeInfo.scss";
 @import "./components/HomeMobile/HomeMobile.scss";
+@import "./components/HomeServices/HomeServices.scss";
 @import "./components/Navbar/Navbar.scss";
 @import "./views/Home/Home.scss";
 

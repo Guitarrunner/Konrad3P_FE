@@ -11,6 +11,7 @@
         left: 0;
         border-right: 0.01rem solid $second-color;
         animation: fade-in 500ms forwards normal;
+        min-height: 41rem;
     }
     &__container{
         display: flex;
