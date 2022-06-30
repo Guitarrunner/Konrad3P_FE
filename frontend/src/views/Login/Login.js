@@ -1,9 +1,11 @@
 import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import eye from "../../assets/view.png";
+import closeEye from "../../assets/private.png";
 function Login() {
   const base = "login";
   const passwordRef = useRef();
+  const eyeRef = useRef()
   const [logInput, setLogInput] = useState({ email: "", password: "" });
   const navigate = useNavigate()
 
@@ -16,8 +18,10 @@ function Login() {
   const showPassword = (event) => {
     event.preventDefault();
     if (passwordRef.current.type === "password") {
+      eyeRef.current.src = closeEye; 
       passwordRef.current.type = "text";
     } else {
+      eyeRef.current.src = eye; 
       passwordRef.current.type = "password";
     }
   };
@@ -91,13 +95,12 @@ function Login() {
                   maxLength={40}
                   required
                 ></input>
-                <a
-                  href=""
+                <button
                   className={`${base}__wrapper__form__container__password__view`}
                   onClick={(event) => showPassword(event)}
                 >
-                  <img src={eye} alt="Toggle password visibility" />
-                </a>
+                  <img ref={eyeRef} src={eye} alt="Toggle password visibility" />
+                </button>
               </div>
             </div>
             <div className={`${base}__wrapper__form__submit-container`}>

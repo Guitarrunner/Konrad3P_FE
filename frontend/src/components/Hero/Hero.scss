@@ -11,13 +11,13 @@
         width: 70%;
         transition: all ease-in-out 300ms;
         overflow: hidden;
-        @media (min-width: 760px) {
+        @media (min-width: $mobile) {
             width: 80%;
         }
         &__img{
             width: 100%;
-            min-width:1400px;
-            min-height: 1000px;
+            min-width:87.5rem;
+            min-height: 62.5rem;
             opacity: 0.6;
         }
         &__title{
@@ -33,7 +33,7 @@
             z-index: 3;
             animation: fade-in-long 1000ms normal forwards ;
             transition: all ease-in-out 300ms;
-            @media (min-width: 760px) {
+            @media (min-width: $mobile) {
                 font-size: 3rem;
                 width: 100%;
             }
@@ -45,7 +45,7 @@
         flex-direction: column;
         width: 30%;
         transition: all ease-in-out 300ms;
-        @media (min-width: 760px) {
+        @media (min-width: $mobile) {
             width: 20%;
         }
         align-items: center;

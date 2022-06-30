@@ -24,7 +24,7 @@
                 width: 80%;
                 font-size: 4.5rem;
                 transition: all ease-in-out 300ms;
-                @media (min-width: 760px) {
+                @media (min-width: $mobile) {
                     font-size: 3rem;
                     width: 100%;
                 }

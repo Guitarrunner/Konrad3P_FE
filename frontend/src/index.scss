@@ -8,6 +8,7 @@
 @import "./styles/mixins/section.scss";
 @import "./styles/mixins/root.scss";
 @import "./styles/variables/colors.scss";
+@import "./styles/variables/constants.scss";
 @import "./components/Footer/Footer.scss";
 @import "./components/HeaderDesktop/HeaderDesktop.scss";
 @import "./components/Hero/Hero.scss";
@@ -18,6 +19,7 @@
 @import "./components/HomeServices/HomeServices.scss";
 @import "./components/HomePartners/HomePartners.scss";
 @import "./components/Navbar/Navbar.scss";
+@import "./views/CreateAccount/CreateAccount.scss";
 @import "./views/Home/Home.scss";
 @import "./views/Login/Login.scss";
 
