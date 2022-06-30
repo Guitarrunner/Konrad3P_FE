@@ -21,8 +21,8 @@ function Hero(props){
             </div>
             <div className={`${base}__container__data`}>
             <img className={`${base}__container__data__img`} alt="Accounts" src={cardLogo} />
-                <h2 className={`${base}__container__data__info`}>2</h2>
-                <p className={`${base}__container__data__desc`}>Cards</p>
+                <h2 className={`${base}__container__data__info`}>+40</h2>
+                <p className={`${base}__container__data__desc`}>Services</p>
             </div>
             <div className={`${base}__container__next`}>
                 <HashLink to="#info" smooth className={`${base}__container__next__btn`}>&#8594;</HashLink>

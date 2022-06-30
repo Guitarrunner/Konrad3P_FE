@@ -12,7 +12,7 @@
         align-items: center;
         width: 90%;
         height: 50%;
-        margin-top: -20%;
+        margin-top: -10%;
         &__title{
             font-size: 3rem;
             color: $main-color;
@@ -32,6 +32,7 @@
             border-radius: 2rem;
             background-color: $main-color;
             color: $second-color;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px; 
             transition: all ease-in-out 300ms;
             &:hover{
                 transform: scale(1.1);
@@ -83,6 +84,7 @@
             border-bottom: 0.03rem solid $second-color;
         }
         &__form{
+            margin-top: -2rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -125,7 +127,7 @@
                     
                     &__view{
                         position: absolute;
-                        left: 90%;
+                        left: 98%;
                         top: calc( 100% * 0.5 - 0.5rem);
                     }
                 }
@@ -137,7 +139,8 @@
                 height: 20%;
                 &__submit{
                     margin-top: 3rem;
-                    box-shadow: rgba(255, 255, 255, 0.2) 0px 60px 40px -7px;                    border-radius: 1rem;
+                    box-shadow: rgba(255, 255, 255, 0.2) 0px 60px 40px -7px;                    
+                    border-radius: 1rem;
                     border:none;
                     background-color: $second-color;
                     width: 40%;
