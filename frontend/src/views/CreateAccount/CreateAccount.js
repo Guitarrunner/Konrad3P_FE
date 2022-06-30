@@ -9,7 +9,7 @@ function CreateAccount() {
     fullName: "",
     idPhoto: "",
     idNum: "",
-    sourceIncome: "Other",
+    sourceIncome: "Employed/Salaried",
     email: "",
     password: "",
   });
@@ -58,19 +58,26 @@ function CreateAccount() {
     } else {
       let photo = await onFileUpload();
       await inputHandler("idPhoto",photo.message)
-      
+      let temp = { ...data };
+    temp["idPhoto"] = photo.message;
       fetch("http://localhost:3000/signup", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify(temp),
       })
         .then((res) => res.json())
         .then((res) => {
-          alert("Added")
-          navigate("/dashboard")
+            if(res.message==="Succesful!"){
+                alert(res.message);
+                navigate("/dashboard")
+            }
+            else{
+                alert(res.message);
+                window.location.reload(false);
+            }
         })
         .catch((res) => {
           alert(res.message);
@@ -100,6 +107,7 @@ function CreateAccount() {
                 className={`${base}__input`}
                 type="text"
                 required
+                placeholder="John Doe"
                 onInput={(event) => {
                   inputHandler("fullName", event.target.value);
                 }}
@@ -111,6 +119,7 @@ function CreateAccount() {
                 className={`${base}__input`}
                 aria-label="quantity of items"
                 type="number"
+                placeholder="112347890"
                 title="IDs have 9 numbers!"
                 maxLength={9}
                 minLength={9}
@@ -142,7 +151,14 @@ function CreateAccount() {
             ) : null}
             <div className={`${base}__body__container__form__wrapper`}>
               <label className={`${base}__label`}>Source of income</label>
-              <input className={`${base}__input`} type="text" required />
+              <select className={`${base}__input`} name="sources" onInput={(event)=>inputHandler("sourceIncome",event.target.value)}>
+                <option value="Employed/Salaried">Employed/Salaried</option>
+                <option value="Bussiness Owner">Bussiness Owner</option>
+                <option value="Self Employed">Self Employed</option>
+                <option value="Retired">Retired</option>
+                <option value="Investor">Investor</option>
+                <option value="Other">Other</option>
+            </select>
             </div>
             <div className={`${base}__body__container__form__wrapper`}>
               <label className={`${base}__label`}>Email</label>
@@ -150,6 +166,7 @@ function CreateAccount() {
                 className={`${base}__input`}
                 type="text"
                 required
+                placeholder="john.doe@gmail.com"
                 pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
                 title="Wrong email"
                 onInput={(event) => {

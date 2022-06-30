@@ -9,7 +9,7 @@
     height: 100vh;
     @media (min-width: $mobile) {
       height: 100vh;
-      overflow: hidden;
+      overflow-y: scroll;
     }
   }
   &__header {
@@ -25,6 +25,10 @@
       margin-left: 10%;
       margin-top: 20%;
       display: flex;
+      @media (min-width: $mobile) {
+        margin-top: 5%;
+      }
+      
       flex-direction: column;
       width: 90%;
       &__title {
@@ -44,6 +48,9 @@
     position: relative;
     width: 100%;
     display: flex;
+    @media (min-width: $mobile) {
+      min-height: 34rem;
+    }
     &__container {
       position: absolute;
       display: flex;
@@ -52,12 +59,16 @@
       background-color: $second-color;
       border-radius: 1rem;
       overflow-y: auto;
-      box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-        rgba(0, 0, 0, 0.22) 0px 15px 12px;
+      box-shadow: rgba(0, 0, 0, 0.3) 0rem 1.1875rem 2.375rem,
+        rgba(0, 0, 0, 0.22) 0rem 0.9375rem 0.75rem;
       height: 100%;
       width: 90%;
       left: 5%;
       top: -12.5%;
+      @media (min-width: $mobile) {
+        height: 90%;
+        min-height: 34rem;
+      }
       &::-webkit-scrollbar {
         width: 0.5rem;
         }
@@ -78,6 +89,11 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        @media (min-width: $mobile) {
+          overflow-y: hidden;
+          flex-wrap: wrap;
+          width: 100%;
+        }
         &__wrapper {
           display: flex;
           justify-content: space-between;
@@ -87,6 +103,11 @@
           width: 90%;
           border-radius: 1.5rem;
           margin-top: 1.5rem;
+          @media (min-width: $mobile) {
+            height: 4rem;
+            margin-top: 2rem;
+            width: 45%;
+          }
         }
       }
     }
@@ -126,6 +147,9 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    @media (min-width: $mobile) {
+      width: 40%;
+    }
     &__btn {
       position: relative;
       border-radius: 1.5rem;
@@ -137,12 +161,12 @@
       font-weight: bold;
       font-size: 1rem;
       height: 3rem;
-      box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+      box-shadow: rgba(0, 0, 0, 0.2) 0rem 3.75rem 2.5rem -0.4375rem;
       transition: all ease-in-out 300ms;
       margin-bottom: 1rem;
       @media (min-width: $mobile) {
         margin-top: 3rem;
-        width: 40%;
+        width: 60%;
       }
       &:hover {
         transform: scale(1.1);
@@ -189,11 +213,15 @@
     width: 60%;
     height: 6rem;
     animation: fade-in forwards normal 300ms;
+    @media (min-width: $mobile) {
+      width: 40%;
+      height: 9rem;
+    }
     &__img {
     border: 0.06rem solid $main-color;
     padding: 0.5rem;
-      height: 90%;
-      width: auto;
+    height: 90%;
+    width: auto;
     }
   }
 }

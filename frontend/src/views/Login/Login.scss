@@ -46,7 +46,7 @@
       border-radius: 2rem;
       background-color: $main-color;
       color: $second-color;
-      box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+      box-shadow: rgba(0, 0, 0, 0.2) 0rem 3.75rem 2.5rem -0.4375rem;
       transition: all ease-in-out 300ms;
       @media (min-width: $mobile) {
         margin-top: 3rem;
@@ -105,8 +105,8 @@
     height: calc($tablet * 0.8);
     animation: slide-up 500ms forwards normal;
     background-color: $main-color;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-      rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0rem 1.1875rem 2.375rem,
+      rgba(0, 0, 0, 0.22) 0rem 0.9375rem 0.75rem;
     border-radius: 2rem;
     flex-direction: column;
     transition: all ease-out 200ms;
@@ -203,7 +203,7 @@
             height: 20%;
         }
         &__submit {
-          box-shadow: rgba(255, 255, 255, 0.2) 0px 60px 40px -7px;
+          box-shadow: rgba(255, 255, 255, 0.2) 0rem 3.75rem 2.5rem -0.4375rem;
           border-radius: 1.5rem;
           border: none;
           background-color: $second-color;

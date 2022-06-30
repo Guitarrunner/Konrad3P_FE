@@ -39,9 +39,9 @@ function Login() {
       .then((res) => res.json())
       .then((res) => {
         if(res.token){
-          var now = new Date();
-        var time = now.getTime();
-        var expireTime = time + 1000*36000;
+          let now = new Date();
+        let time = now.getTime();
+        let expireTime = time + 1000*36000;
         now.setTime(expireTime);
         document.cookie = `token=${res.token};expires=${now.toUTCString()};path=/`;
         navigate("/dashboard")
