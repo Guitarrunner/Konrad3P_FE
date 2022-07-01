@@ -86,7 +86,7 @@ function CreateAccount() {
   };
 
   return (
-    <div className={`${base}__root`}>
+    <main className={`${base}__root`}>
       <div className={`${base}__header`}>
         <div className={`${base}__header__container`}>
           <h1 className={`${base}__header__container__title`}>
@@ -102,10 +102,11 @@ function CreateAccount() {
         <div className={`${base}__body__container`}>
           <form className={`${base}__body__container__form`} onSubmit={(event)=>submitInfo(event)}>
             <div className={`${base}__body__container__form__wrapper`}>
-              <label className={`${base}__label`}>Full Name</label>
+              <label htmlFor="input-full-name" className={`${base}__label`}>Full Name</label>
               <input
                 className={`${base}__input`}
                 type="text"
+                id="input-full-name"
                 required
                 placeholder="John Doe"
                 onInput={(event) => {
@@ -114,11 +115,11 @@ function CreateAccount() {
               />
             </div>
             <div className={`${base}__body__container__form__wrapper`}>
-              <label className={`${base}__label`}>ID</label>
+              <label htmlFor="input-id" className={`${base}__label`}>ID</label>
               <input
                 className={`${base}__input`}
-                aria-label="quantity of items"
                 type="number"
+                id="input-id"
                 placeholder="112347890"
                 title="IDs have 9 numbers!"
                 maxLength={9}
@@ -131,12 +132,14 @@ function CreateAccount() {
               ></input>
             </div>
             <div className={`${base}__body__container__form__wrapper`}>
-              <label className={`${base}__label`}>ID Photo</label>
+              <label htmlFor="input-id-photo" className={`${base}__label`}>ID Photo</label>
               <input
                 className={`${base}__input--file`}
                 type="file"
+                id="input-id-photo" 
                 accept="image/*"
                 required
+                capture
                 onChange={(event) => onFileChange(event)}
               />
             </div>
@@ -150,21 +153,22 @@ function CreateAccount() {
               </div>
             ) : null}
             <div className={`${base}__body__container__form__wrapper`}>
-              <label className={`${base}__label`}>Source of income</label>
-              <select className={`${base}__input`} name="sources" onInput={(event)=>inputHandler("sourceIncome",event.target.value)}>
-                <option value="Employed/Salaried">Employed/Salaried</option>
-                <option value="Bussiness Owner">Bussiness Owner</option>
-                <option value="Self Employed">Self Employed</option>
-                <option value="Retired">Retired</option>
-                <option value="Investor">Investor</option>
-                <option value="Other">Other</option>
+              <label htmlFor="input-source-income"  className={`${base}__label`}>Source of income</label>
+              <select id="input-source-income" className={`${base}__input`} name="sources" onInput={(event)=>inputHandler("sourceIncome",event.target.value)}>
+                <option name="employed-salaried" value="Employed/Salaried">Employed/Salaried</option>
+                <option name="bussiness-owner" value="Bussiness Owner">Bussiness Owner</option>
+                <option name="self-employed" value="Self Employed">Self Employed</option>
+                <option name="retired" value="Retired">Retired</option>
+                <option name="investor" value="Investor">Investor</option>
+                <option name="other" value="Other">Other</option>
             </select>
             </div>
             <div className={`${base}__body__container__form__wrapper`}>
-              <label className={`${base}__label`}>Email</label>
+              <label htmlFor="input-email" className={`${base}__label`}>Email</label>
               <input
                 className={`${base}__input`}
                 type="text"
+                id="input-email"
                 required
                 placeholder="john.doe@gmail.com"
                 pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
@@ -175,10 +179,11 @@ function CreateAccount() {
               />
             </div>
             <div className={`${base}__body__container__form__wrapper`}>
-              <label className={`${base}__label`}>Password</label>
+              <label htmlFor="input-password" className={`${base}__label`}>Password</label>
               <input
                 title="Password must have one upper case letter, one lower case letter, one number and one symbol and at least 8 characters long"
                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,40}$"
+                id="input-password"
                 minLength={8}
                 maxLength={40}
                 className={`${base}__input`}
@@ -190,8 +195,8 @@ function CreateAccount() {
               />
             </div>
             <div className={`${base}__body__container__form__wrapper`}>
-              <label className={`${base}__label`}>Confirm Password</label>
-              <input ref={refPassword} className={`${base}__input`} type="password" required />
+              <label htmlFor="input-confirm-password" className={`${base}__label`}>Confirm Password</label>
+              <input id="input-confirm-password" ref={refPassword} className={`${base}__input`} type="password" required />
             </div>
             <div className={`${base}__btn-container`}>
               <button type="submit" className={`${base}__btn-container__btn`}>
@@ -211,7 +216,7 @@ function CreateAccount() {
           Already have an account?
         </Link>
       </div>
-    </div>
+    </main>
   );
 }
 

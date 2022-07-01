@@ -4,13 +4,12 @@ import bankLogo from "../../assets/bankLogo.png"
 import cardLogo from "../../assets/debit-card.png"
 function Hero(props){
     const base = "hero";
-    const {elementRef} = props;
 
     return(
     <div className={`${base}__root`}>
         <div className={`${base}__img-container`}>
             <h1 className={`${base}__img-container__title`}>This is the new bank experience</h1>
-            <img className={`${base}__img-container__img`} alt="Bank Image" src={heroImage}/>
+            <img className={`${base}__img-container__img`} alt="Bank Logo" src={heroImage}/>
         </div>
         <div className={`${base}__container`}>
             <div className={`${base}__container__data`}>

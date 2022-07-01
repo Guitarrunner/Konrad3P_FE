@@ -19,9 +19,15 @@
 @import "./components/HomeServices/HomeServices.scss";
 @import "./components/HomePartners/HomePartners.scss";
 @import "./components/Navbar/Navbar.scss";
+@import "./views/AccountHistory/AccountHistory.scss";
+@import "./views/AddMoney/AddMoney.scss";
 @import "./views/CreateAccount/CreateAccount.scss";
+@import "./views/Dashboard/Dashboard.scss";
 @import "./views/Home/Home.scss";
 @import "./views/Login/Login.scss";
+@import "./views/MoneyTransfer/MoneyTransfer.scss";
+@import "./views/Profile/Profile.scss";
+@import "./views/Services/Services.scss";
 
 body {
   margin: 0;

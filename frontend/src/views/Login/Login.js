@@ -56,7 +56,7 @@ function Login() {
       });
   };
   return (
-    <div className={`${base}__root`}>
+    <main className={`${base}__root`}>
       <div className={`${base}__wrapper`}>
         <div className={`${base}__section`}>
           <form
@@ -65,12 +65,13 @@ function Login() {
           >
             <h1 className={`${base}__wrapper__title`}>Login</h1>
             <div className={`${base}__wrapper__form__container`}>
-              <label className={`${base}__wrapper__form__container__label`}>
+              <label htmlFor="input-email" className={`${base}__wrapper__form__container__label`}>
                 Email
               </label>
               <input
                 className={`${base}__wrapper__form__container__input`}
                 type="text"
+                id="input-email"
                 onInput={(event) => inputHandler("email", event.target.value)}
                 pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
                 title="Wrong email"
@@ -78,13 +79,14 @@ function Login() {
               ></input>
             </div>
             <div className={`${base}__wrapper__form__container`}>
-              <label className={`${base}__wrapper__form__container__label`}>
+              <label htmlFor="input-password" className={`${base}__wrapper__form__container__label`}>
                 Password
               </label>
               <div className={`${base}__wrapper__form__container__password`}>
                 <input
                   className={`${base}__wrapper__form__container__password__input`}
                   ref={passwordRef}
+                  id="input-password"
                   onInput={(event) =>
                     inputHandler("password", event.target.value)
                   }
@@ -126,7 +128,7 @@ function Login() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
