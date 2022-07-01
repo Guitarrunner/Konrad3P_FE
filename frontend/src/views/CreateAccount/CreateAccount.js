@@ -71,7 +71,8 @@ function CreateAccount() {
         .then((res) => res.json())
         .then((res) => {
             if(res.message==="Succesful!"){
-                alert(res.message);
+                alert(res.message);                
+                window.localStorage.setItem('user', res.user);
                 navigate("/dashboard")
             }
             else{

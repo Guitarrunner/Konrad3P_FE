@@ -1,27 +1,28 @@
-import { useRef, useState } from "react";
+import {useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import eye from "../../assets/view.png";
 import closeEye from "../../assets/private.png";
 function Login() {
   const base = "login";
   const passwordRef = useRef();
-  const eyeRef = useRef()
+  const eyeRef = useRef();
   const [logInput, setLogInput] = useState({ email: "", password: "" });
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
+  window.localStorage.clear();
   const inputHandler = (key, value) => {
     let temp = { ...logInput };
     temp[key] = value;
     setLogInput(temp);
   };
 
+  
   const showPassword = (event) => {
     event.preventDefault();
     if (passwordRef.current.type === "password") {
-      eyeRef.current.src = closeEye; 
+      eyeRef.current.src = closeEye;
       passwordRef.current.type = "text";
     } else {
-      eyeRef.current.src = eye; 
+      eyeRef.current.src = eye;
       passwordRef.current.type = "password";
     }
   };
@@ -38,18 +39,26 @@ function Login() {
     })
       .then((res) => res.json())
       .then((res) => {
-        if(res.token){
+        if (res.token) {
           let now = new Date();
-        let time = now.getTime();
-        let expireTime = time + 1000*36000;
-        now.setTime(expireTime);
-        document.cookie = `token=${res.token};expires=${now.toUTCString()};path=/`;
-        navigate("/dashboard")
-        
-        }else{
+          let time = now.getTime();
+          let expireTime = time + 1000 * 36000;
+          now.setTime(expireTime);
+          document.cookie = `token=${
+            res.token
+          };expires=${now.toUTCString()};path=/`;
+          fetch(`http://localhost:3000/user/${res.id}`)
+            .then((res) => res.json())
+            .then((res) => {
+              window.localStorage.setItem('user', JSON.stringify(res.user));
+              navigate("/dashboard");
+            })
+            .catch((res) => {
+              console.log(res);
+            });
+        } else {
           console.log(res);
         }
-        
       })
       .catch((res) => {
         console.log(res);
@@ -65,7 +74,10 @@ function Login() {
           >
             <h1 className={`${base}__wrapper__title`}>Login</h1>
             <div className={`${base}__wrapper__form__container`}>
-              <label htmlFor="input-email" className={`${base}__wrapper__form__container__label`}>
+              <label
+                htmlFor="input-email"
+                className={`${base}__wrapper__form__container__label`}
+              >
                 Email
               </label>
               <input
@@ -79,7 +91,10 @@ function Login() {
               ></input>
             </div>
             <div className={`${base}__wrapper__form__container`}>
-              <label htmlFor="input-password" className={`${base}__wrapper__form__container__label`}>
+              <label
+                htmlFor="input-password"
+                className={`${base}__wrapper__form__container__label`}
+              >
                 Password
               </label>
               <div className={`${base}__wrapper__form__container__password`}>
@@ -92,7 +107,7 @@ function Login() {
                   }
                   type="password"
                   title="Password must have one upper case letter, one lower case letter, one number and one symbol and at least 8 characters long"
-                  pattern ="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,40}$"
+                  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,40}$"
                   minLength={8}
                   maxLength={40}
                   required
@@ -101,7 +116,11 @@ function Login() {
                   className={`${base}__wrapper__form__container__password__view`}
                   onClick={(event) => showPassword(event)}
                 >
-                  <img ref={eyeRef} src={eye} alt="Toggle password visibility" />
+                  <img
+                    ref={eyeRef}
+                    src={eye}
+                    alt="Toggle password visibility"
+                  />
                 </button>
               </div>
             </div>
