@@ -21,9 +21,7 @@ function AddMoney(){
       setData(temp);
     };
     const currentUser = JSON.parse(window.localStorage.getItem('user'));
-    console.log(window.localStorage.getItem('user'))
-    console.log(currentUser.accounts)
-  
+
     const handleblock = (evt) => {
       if (evt.which === 69 || evt.which === 189 || evt.which === 187 || evt.target.value.length===10) {
         evt.preventDefault();
@@ -32,7 +30,7 @@ function AddMoney(){
   
     const transfer = (event) => {
       event.preventDefault();
-      if (data.toCredit===""){
+      if (data.toCredit==="" || data.toCredit==="Accounts"){
         alert("Escoja una cuenta")
       }
       else{
@@ -104,7 +102,7 @@ function AddMoney(){
                 type="checkbox"
                 id="check-transfer"
                 value="same-bank"
-                onInput={(event) => inputHandler("typeTransaction", event.target.value)}
+                onInput={(event) => inputHandler("typeTransaction", event.target.checked)}
               />
             </div>
             <div className={`${base}__form__container`}>

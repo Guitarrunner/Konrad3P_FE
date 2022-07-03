@@ -1,8 +1,19 @@
+import { useEffect, useState } from "react";
+import useBreakPoint from "../../hooks/useBreakPoint";
+
 function AccountHistory() {
   const base = "account-history";
   const currentUser = JSON.parse(window.localStorage.getItem("user"));
-  console.log(window.localStorage.getItem("user"));
-  console.log(currentUser.accounts);
+  const [size, setSize] = useState(0);
+
+    let device = useBreakPoint(size);
+
+    window.onresize = () => { setSize(window.innerWidth) };
+
+    useEffect(() => {
+        setSize(window.innerWidth)
+    }, [])
+
 
   return (
     <main className={`${base}__root`}>
@@ -14,16 +25,26 @@ function AccountHistory() {
             <p>You have no movements</p>
           </div>
         ) : (
-          currentUser.log.map((message, i) => {
-            return (
-              <div key={i}>
-                <p>{message.type}</p>
-                <p>{message.amount}</p>
-                <p>{message.date}</p>
-              </div>
-            );
+          <ul className={`${base}__log-list`}>
+          {currentUser.log.map((message, i) => {
+            if(device === "mobile"){
+              return(
+                <li key={i} className={`${base}__log-list__box`}>
+                <p className={`${base}__log-list__box__item`}>Type: {message.type}</p>
+                <p className={`${base}__log-list__box__item`}>Amount of transfer: {parseFloat(message.amount).toFixed(2)}</p>
+                <p className={`${base}__log-list__box__item`}> Date: {message.date}</p>
+              </li>
+              )
+              
+            }
+            else{
+                return null
+            }
+            
+            
+            
           })
-        )}
+        }</ul>)}
       </div>
     </main>
   );

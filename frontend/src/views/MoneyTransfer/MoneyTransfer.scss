@@ -1,5 +1,17 @@
-.money-transfer{
-    &__root{
-        color: $second-color;
+.money-transfer {
+  &__root {
+    @include root;
+    background-color: $second-color;
+    overflow: scroll;
+    color: $main-color;
+    transition: all ease-in 300ms;
+    @media (min-width: $mobile) {
+      height: 100vh;
+      overflow: hidden;
     }
+  }
+  @include transaction;
+  &__amount{
+    font-size: 1rem;
+  }
 }

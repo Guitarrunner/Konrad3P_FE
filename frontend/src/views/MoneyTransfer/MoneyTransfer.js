@@ -5,9 +5,10 @@ function MoneyTransfer() {
   const [data, setData] = useState({ toDebit: "", toCredit: "", amount: "",typeTransaction:"debit",type:""});
   const [account, setAccount] = useState({})
   const inputHandler = (key, value) => {
+    let temp = { ...data };
     if(key==="toDebit"){
-        let temp = currentUser.accounts.filter(account => account.IBAN === parseInt(value))[0];
-        setAccount(temp);
+        let acc = currentUser.accounts.filter(account => account.IBAN === parseInt(value))[0];
+        setAccount(acc);
     }
     if(key==="typeTransaction"){
         if(value){
@@ -17,22 +18,29 @@ function MoneyTransfer() {
             value="debit"
         }
     }
-    let temp = { ...data };
+    if(key==="toCredit" && value.length===22){
+      temp["type"] = value.substring(0,2)
+      value = value.substring(2)
+    }
+    
     temp[key] = value;
     setData(temp);
   };
   const currentUser = JSON.parse(window.localStorage.getItem('user'));
-  console.log(window.localStorage.getItem('user'))
-  console.log(currentUser.accounts)
+
 
   const handleblock = (evt) => {
-    if (evt.which === 69 || evt.which === 189 || evt.which === 187) {
+    if (evt.which === 69 || evt.which === 189 || evt.which === 187 || evt.target.value.length===10) {
       evt.preventDefault();
     }
   };
 
   const transfer = (event) => {
     event.preventDefault();
+    if (data.toDebit==="" || data.toCredit==="Accounts"){
+      alert("Escoja una cuenta")
+    }
+    else{
     console.log(data)
     fetch("http://localhost:3000/transaction/transfer", {
       headers: {
@@ -60,13 +68,13 @@ function MoneyTransfer() {
       })
       .catch((res) => {
         console.log(res.message);
-      });
+      });}
   };
 
   return (
     <main className={`${base}__root`}>
       <div className={`${base}__wrapper`}>
-        <h1 className={`${base}__title`}>transfer Money</h1>
+        <h1 className={`${base}__title`}>Transfer Money</h1>
         <form className={`${base}__form`} onSubmit={(event) => transfer(event)}>
           <div className={`${base}__form__container`}>
             <label
@@ -77,12 +85,12 @@ function MoneyTransfer() {
             </label>
             <select
               id="input-debit"
-              className={`${base}__form__container__account`}
+              className={`${base}__form__container__input`}
               name="accounts"
               onInput={(event) => inputHandler("toDebit", event.target.value)}
               required
             >
-                <option>Accounts</option>
+                <option value={""}>Accounts</option>
               {currentUser.accounts.map((account, i) => {
                     return <option
                       key={i}
@@ -92,8 +100,9 @@ function MoneyTransfer() {
                   })}
             </select>
           </div>
+          {(data.toDebit !== "" || data.toDebit==="Accounts")? <p className={`${base}__amount`}>{`Amount Available: ${ parseFloat(account.amount).toFixed(2)}`}</p>:null}
           <div className={`${base}__form__container`}>
-            {data.toDebit !== "" ? <p className={`${base}__form__container__amount`}>{`Amount Available: ${account.amount}`}</p>:null}
+            
             <label
               htmlFor="input-amount"
               className={`${base}__form__container__label`}
@@ -111,21 +120,7 @@ function MoneyTransfer() {
               onKeyDown={(event) => handleblock(event)}
             />
           </div>
-          <div className={`${base}__form__container`}>
-            <label
-              htmlFor="check-transfer"
-              className={`${base}__form__container__label`}
-            >
-              Same Bank
-            </label>
-            <input
-              className={`${base}__form__container__check`}
-              type="checkbox"
-              id="check-transfer"
-              value="same-bank"
-              onInput={(event) => inputHandler("typeTransaction", event.target.value)}
-            />
-          </div>
+          
           <div className={`${base}__form__container`}>
             <label
               htmlFor="input-credit"
@@ -137,15 +132,31 @@ function MoneyTransfer() {
               className={`${base}__form__container__input`}
               type="text"
               id="input-credit"
-              text="Account to credit is required"
+              pattern="(US|CR)+[0-9]{20}$"
+                title="Use US or CR + IBAN number"
+                maxLength={22}
               required
               onInput={(event) => inputHandler("toCredit", event.target.value)}
+            />
+          </div>
+          <div className={`${base}__form__container--mark`}>
+            <label
+              htmlFor="check-transfer"
+              className={`${base}__form__container__label--mark`}
+            >
+              Credit account is from Universal
+            </label>
+            <input
+              className={`${base}__form__container__check`}
+              type="checkbox"
+              id="check-transfer"
+              onInput={(event) => inputHandler("typeTransaction", event.target.checked)}
             />
           </div>
           <div className={`${base}__form__btn-container`}>
             <button
               type="submit"
-              className={`${base}__form__btn-container-btn`}
+              className={`${base}__form__btn-container__btn`}
             >
               Transfer
             </button>
