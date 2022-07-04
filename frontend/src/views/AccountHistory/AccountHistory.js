@@ -1,12 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useBreakPoint from "../../hooks/useBreakPoint";
 
 function AccountHistory() {
   const base = "account-history";
   const currentUser = JSON.parse(window.localStorage.getItem("user"));
   const [size, setSize] = useState(0);
-
+  const pageElements = 5;
+  const[currentPag, setCurrentPag] = useState(1)
+  const [lastButton,setLastButton] = useState(null);
+  const pages = Math.ceil(currentUser.log.length / pageElements);
   let device = useBreakPoint(size);
+  const firstRef = useRef()
+  const rootRef = useRef()
+  let pagesList=[];
+    for (let index = 0; index < pages; index++) {
+        pagesList.push(index);
+    }
 
   window.onresize = () => {
     setSize(window.innerWidth);
@@ -16,9 +25,29 @@ function AccountHistory() {
     setSize(window.innerWidth);
   }, []);
 
+
+  const changePage = (event,pageNumber)  =>{
+    if (lastButton===null && event.target === firstRef.current){
+        return
+    }
+    if (lastButton!=null){
+        event.target.classList.toggle("on");
+        lastButton.classList.toggle("on");
+        setCurrentPag(pageNumber);
+        setLastButton(event.target);
+        rootRef.current.scrollTo({top:0, behavior:"smooth"});
+    }
+    else{
+      firstRef.current.classList.toggle("on");
+      event.target.classList.toggle("on")
+        setCurrentPag(pageNumber);
+        setLastButton(event.target);
+        rootRef.current.scrollTo({top:0, behavior:"smooth"});
+    }
+}
   return (
-    <main className={`${base}__root`}>
-      <div className={`${base}__wrapper`}>
+    <main  className={`${base}__root`}>
+      <div ref={rootRef} className={`${base}__wrapper`}>
         <h1 className={`${base}__title`}>Log</h1>
 
         {currentUser.log.length === 0 ? (
@@ -46,6 +75,7 @@ function AccountHistory() {
             }
             {currentUser.log.map((message, i) => {
               if (device === "mobile") {
+                if(pageElements*(currentPag-1)<= i && i<pageElements*currentPag){
                 return (
                   <li key={i} className={`${base}__log-list__box`}>
                     <p className={`${base}__log-list__box__item`}>
@@ -58,49 +88,48 @@ function AccountHistory() {
                       Date: {message.date}
                     </p>
                   </li>
-                );
+                );}
               } else {
-                if (i === 0) {
-                  return(
-                  
-                    <li key={i} tabIndex={0} className={`${base}__log-list__row`}>
-                    <p className={`${base}__log-list__row__item--index`}>
-                        {i+1}
-                      </p>
-                      <p className={`${base}__log-list__row__item--type`}>
-                        {message.type}
-                      </p>
-                      <p className={`${base}__log-list__row__item--amount`}>
-                        {parseFloat(message.amount).toFixed(2)}
-                      </p>
-                      <p className={`${base}__log-list__row__item--date`}>
-                        {message.date}
-                      </p>
-                    </li>
-                  );
-                } else {
-                  return (
-                    <li tabIndex={0} key={i} className={`${base}__log-list__row`}>
-                      <p className={`${base}__log-list__row__item--index`}>
-                        {i+1}
-                      </p>
-                      <p className={`${base}__log-list__row__item--type`}>
-                        {message.type}
-                      </p>
-                      <p className={`${base}__log-list__row__item--amount`}>
-                        {parseFloat(message.amount).toFixed(2)}
-                      </p>
-                      <p className={`${base}__log-list__row__item--date`}>
-                        {message.date}
-                      </p>
-                    </li>
-                  );
+                
+                  if(pageElements*(currentPag-1)<= i && i<pageElements*currentPag){
+                    return (
+                      <li tabIndex={0} key={i} className={`${base}__log-list__row`}>
+                        <p className={`${base}__log-list__row__item--index`}>
+                          {i+1}
+                        </p>
+                        <p className={`${base}__log-list__row__item--type`}>
+                          {message.type}
+                        </p>
+                        <p className={`${base}__log-list__row__item--amount`}>
+                          {parseFloat(message.amount).toFixed(2)}
+                        </p>
+                        <p className={`${base}__log-list__row__item--date`}>
+                          {message.date}
+                        </p>
+                      </li>
+                    );
                 }
-              }
-            })}
+                 
+              else{
+                return null
+              } 
+                
+              } return null
+            })
+           }
           </ul>
         )}
-      </div>
+        
+      </div><div className={`${base}__btn-container`}>
+                {pagesList.map((number,i)=>{
+                    if (number===0){
+                        return (<button key={i} aria-label={`You are in the first page`} ref={firstRef} className={`${base}__btn-container__btn on`} onClick={(event)=>changePage(event,1)}>1</button>)
+                    }
+                    else{
+                        return (<button key={i} aria-label={`You are in the page number ${number+1} of ${pages}`} className={`${base}__btn-container__btn`} onClick={(event)=>changePage(event,number+1)}>{number+1}</button>)
+                    }
+                })}
+        </div>
     </main>
   );
 }
