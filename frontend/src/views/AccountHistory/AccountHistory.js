@@ -6,14 +6,15 @@ function AccountHistory() {
   const currentUser = JSON.parse(window.localStorage.getItem("user"));
   const [size, setSize] = useState(0);
 
-    let device = useBreakPoint(size);
+  let device = useBreakPoint(size);
 
-    window.onresize = () => { setSize(window.innerWidth) };
+  window.onresize = () => {
+    setSize(window.innerWidth);
+  };
 
-    useEffect(() => {
-        setSize(window.innerWidth)
-    }, [])
-
+  useEffect(() => {
+    setSize(window.innerWidth);
+  }, []);
 
   return (
     <main className={`${base}__root`}>
@@ -26,25 +27,79 @@ function AccountHistory() {
           </div>
         ) : (
           <ul className={`${base}__log-list`}>
-          {currentUser.log.map((message, i) => {
-            if(device === "mobile"){
-              return(
-                <li key={i} className={`${base}__log-list__box`}>
-                <p className={`${base}__log-list__box__item`}>Type: {message.type}</p>
-                <p className={`${base}__log-list__box__item`}>Amount of transfer: {parseFloat(message.amount).toFixed(2)}</p>
-                <p className={`${base}__log-list__box__item`}> Date: {message.date}</p>
-              </li>
-              )
+            {device ==="mobile"
+            ? null
+            : <li className={`${base}__log-list__row`}>
+            <p className={`${base}__log-list__row__item--index`}>
               
+            </p>
+            <p className={`${base}__log-list__row__item--type`}>
+              Type
+            </p>
+            <p className={`${base}__log-list__row__item--amount`}>
+              Amount
+            </p>
+            <p className={`${base}__log-list__row__item--date`}>
+              Date
+            </p>
+          </li>
             }
-            else{
-                return null
-            }
-            
-            
-            
-          })
-        }</ul>)}
+            {currentUser.log.map((message, i) => {
+              if (device === "mobile") {
+                return (
+                  <li key={i} className={`${base}__log-list__box`}>
+                    <p className={`${base}__log-list__box__item`}>
+                      Type: {message.type}
+                    </p>
+                    <p className={`${base}__log-list__box__item`}>
+                      Amount of transfer: {parseFloat(message.amount).toFixed(2)}
+                    </p>
+                    <p className={`${base}__log-list__box__item`}>
+                      Date: {message.date}
+                    </p>
+                  </li>
+                );
+              } else {
+                if (i === 0) {
+                  return(
+                  
+                    <li key={i} tabIndex={0} className={`${base}__log-list__row`}>
+                    <p className={`${base}__log-list__row__item--index`}>
+                        {i+1}
+                      </p>
+                      <p className={`${base}__log-list__row__item--type`}>
+                        {message.type}
+                      </p>
+                      <p className={`${base}__log-list__row__item--amount`}>
+                        {parseFloat(message.amount).toFixed(2)}
+                      </p>
+                      <p className={`${base}__log-list__row__item--date`}>
+                        {message.date}
+                      </p>
+                    </li>
+                  );
+                } else {
+                  return (
+                    <li tabIndex={0} key={i} className={`${base}__log-list__row`}>
+                      <p className={`${base}__log-list__row__item--index`}>
+                        {i+1}
+                      </p>
+                      <p className={`${base}__log-list__row__item--type`}>
+                        {message.type}
+                      </p>
+                      <p className={`${base}__log-list__row__item--amount`}>
+                        {parseFloat(message.amount).toFixed(2)}
+                      </p>
+                      <p className={`${base}__log-list__row__item--date`}>
+                        {message.date}
+                      </p>
+                    </li>
+                  );
+                }
+              }
+            })}
+          </ul>
+        )}
       </div>
     </main>
   );

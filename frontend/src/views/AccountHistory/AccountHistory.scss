@@ -1,46 +1,80 @@
-.account-history{
-    &__root{
-        @include root;
-        background-color: $second-color;
-        overflow: scroll;
-        color: $main-color;
-        transition: all ease-in 300ms;
-        @media (min-width: $mobile) {
-          height: 100vh;
-          overflow: hidden;
+.account-history {
+  &__root {
+    @include root;
+    background-color: $second-color;
+    overflow: scroll;
+    color: $main-color;
+    transition: all ease-in 300ms;
+    @media (min-width: $mobile) {
+      height: 100vh;
+      overflow: scroll;
+    }
+  }
+  @include transaction;
+  &__wrapper {
+    background-color: $second-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 80vh;
+    width: 100vw;
+    @media (min-width: $mobile) {
+      height: 70vh;
+    }
+  }
+  &__log-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__box {
+      padding: 0.5rem;
+      background-color: $main-color;
+      color: $second-color;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      width: 80%;
+      border-radius: 1rem;
+      &__item {
+        margin-left: 1rem;
+      }
+    }
+    &__row {
+      display: flex;
+      margin-bottom: 1rem;
+      width: 100%;
+      border-bottom: 0.03rem solid $main-color;
+      height: 100%;
+      justify-content: space-between;
+      &__item {
+        &--index {
+          text-align: center;
+          width: 3.5%;
+        }
+        &--type {
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          width: 35%;
+        }
+        &--amount {
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          width: 14.5%;
+        }
+        &--date {
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          width: 35%;
         }
       }
-      @include transaction;
-      &__wrapper {
-        background-color: $second-color;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        height: 80vh;
-        width: 100vw;
-        @media (min-width: $mobile) {
-          height: 70vh;
-        }
-      }
-      &__log-list{
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        width: 80%;
-        &__box{
-            background-color: $main-color;
-            color: $second-color;
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 1rem;
-            
-            border-radius: 1rem;
-            &__item{
-                margin-left: 1rem;
-    
-            }
-          }
-      }
-      
+    }
+  }
 }
