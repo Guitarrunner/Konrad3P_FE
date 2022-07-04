@@ -32,7 +32,7 @@ function HomeDesktop() {
         <section className={`${base}__section`} id="services">
           <HomeServices />
         </section>
-        <section className={`${base}__section--last`} id="partners">
+        <section className={`${base}__section`} id="partners">
           <HomePartners />
         </section>
         <HomeFooter/>

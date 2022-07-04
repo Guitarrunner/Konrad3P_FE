@@ -1,9 +1,11 @@
 import React, {useState} from "react";
+import getCookie from "../utils/getCookieName";
 
 export const MainContext = React.createContext();
 
 export const MainProvider = (props) => {
-    const [token, setToken] = useState("a")
+    let temp = getCookie("token");
+    const [token, setToken] = useState(temp);
 
     return(
         <MainContext.Provider value={[token,setToken]}>

@@ -1,7 +1,8 @@
 
 function Dashboard(){
+    const base = "dashboard"
     return(
-        <main>
+        <main className={`${base}__root`}>
             
         </main>
     )

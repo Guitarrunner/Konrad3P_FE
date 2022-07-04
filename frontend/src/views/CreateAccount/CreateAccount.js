@@ -45,6 +45,9 @@ function CreateAccount() {
   };
 
   const handleblock = (evt) => {
+    if(evt.target.value.length ===9 && evt.which !==8){
+      evt.preventDefault();
+    }
     if (evt.which === 69 || evt.which === 189 || evt.which === 187) {
       evt.preventDefault();
     }
@@ -72,8 +75,8 @@ function CreateAccount() {
         .then((res) => {
             if(res.message==="Succesful!"){
                 alert(res.message);                
-                window.localStorage.setItem('user', res.user);
-                navigate("/dashboard")
+                window.localStorage.setItem('user', JSON.stringify(res.user));
+                navigate("/bank/dashboard")
             }
             else{
                 alert(res.message);

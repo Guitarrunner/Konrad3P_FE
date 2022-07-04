@@ -51,7 +51,7 @@ function Login() {
             .then((res) => res.json())
             .then((res) => {
               window.localStorage.setItem('user', JSON.stringify(res.user));
-              navigate("/dashboard");
+              navigate("/bank/dashboard");
             })
             .catch((res) => {
               console.log(res);

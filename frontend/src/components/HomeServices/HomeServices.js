@@ -1,60 +1,68 @@
-import {useState} from "react";
+import { useState } from "react";
 import servicesList from "../../assets/services.json";
 
 function HomeServices() {
   const base = "home-services";
-  const [animate, setAnimate] = useState({animation:false,services:""});
+  const [animate, setAnimate] = useState({ animation: false, services: "" });
 
-  const changeService = (service) =>{
-    if(animate.animation){
-      setAnimate({animation:false,services:""})
-    }
-    else{
-      let temp="";
-      try{
-        temp = servicesList.filter(services => services.name===service)[0].services;
-        setAnimate({animation:true,services:temp})
+  const changeService = (service) => {
+    if (animate.animation) {
+      setAnimate({ animation: false, services: "" });
+    } else {
+      let temp = "";
+      try {
+        temp = servicesList.filter((services) => services.name === service)[0]
+          .services;
+        setAnimate({ animation: true, services: temp });
+      } catch {
+        setAnimate({ animation: false, services: "" });
       }
-      catch{
-        setAnimate({animation:false,services:""})
-      }
-      
     }
-    
-  }
+  };
   return (
     <div className={`${base}__root`}>
       <div className={`${base}__services`}>
-      <div className={`${base}__services__wrapper`}>
-          <h3 tabIndex="2"className={`${base}__services__wrapper__service`} onFocus={()=>changeService("Public Services")} onMouseOver={()=>changeService("Public Services")} onMouseLeave={()=>changeService("")}>
-            Public Services
+        <div className={`${base}__services__wrapper`}>
+          <h3 tabIndex="2" className={`${base}__services__wrapper__service`}>
+            Fees and Credits
           </h3>
-          <p className={`${base}__services__wrapper__arrow`}>&#8594;</p>
         </div>
 
         <div className={`${base}__services__wrapper`}>
-          <h3 tabIndex="2"className={`${base}__services__wrapper__service`}>ARESEP</h3>
+          <h3 tabIndex="2" className={`${base}__services__wrapper__service`}>
+            ARESEP
+          </h3>
         </div>
 
         <div className={`${base}__services__wrapper`}>
-          <h3 tabIndex="2"className={`${base}__services__wrapper__service`} onFocus={()=>changeService("CSSS")} onMouseOver={()=>changeService("CSSS")} onMouseLeave={()=>changeService("")}>CSSS</h3>
-          <p className={`${base}__services__wrapper__arrow`}>&#8594;</p>
-        </div>
-
-        <div className={`${base}__services__wrapper`}>
-          <h3 tabIndex="2"className={`${base}__services__wrapper__service`}>
+          <h3 tabIndex="2" className={`${base}__services__wrapper__service`}>
             Security companies
           </h3>
         </div>
 
         <div className={`${base}__services__wrapper`}>
-          <h3 tabIndex="2"className={`${base}__services__wrapper__service`}>Billing</h3>
+          <h3 tabIndex="2" className={`${base}__services__wrapper__service`}>
+            Billing
+          </h3>
         </div>
 
         <div className={`${base}__services__wrapper`}>
-          <h3 tabIndex="2"className={`${base}__services__wrapper__service`}>
+          <h3 tabIndex="2" className={`${base}__services__wrapper__service`}>
             Professional Colleges
           </h3>
+        </div>
+        <div className={`${base}__services__wrapper`}>
+          <h3
+            tabIndex="2"
+            className={`${base}__services__wrapper__service`}
+            onBlur={() => changeService("")}
+            onFocus={() => changeService("Public Services")}
+            onMouseOver={() => changeService("Public Services")}
+            onMouseLeave={() => changeService("")}
+          >
+            Public Services
+          </h3>
+          <p className={`${base}__services__wrapper__arrow`}>&#8594;</p>
         </div>
       </div>
       <div className={`${base}__center`}>
@@ -62,41 +70,102 @@ function HomeServices() {
           We have +40 services for your convenience
         </h2>
         <div className={`${base}__center__services`}>
-          {!animate.animation 
-          ? <div className={`${base}__center__services__box`}>Here you'll see more services</div>
-          :<div className={`${base}__center__services__box--services`}>
-            {animate.services.map((service,i)=>{
-              return <p tabIndex="1" key={i} className={`${base}__service`}>{service}</p>
-            })}  
-          </div>}
-            
+          {!animate.animation ? (
+            <div className={`${base}__center__services__box`}>
+              Here you'll see more services
+            </div>
+          ) : (
+            <div className={`${base}__center__services__box--services`}>
+              {animate.services.map((service, i) => {
+                return (
+                  <p tabIndex="1" key={i} className={`${base}__service`}>
+                    {service}
+                  </p>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
       <div className={`${base}__services`}>
         <div className={`${base}__services__wrapper`}>
-          <h3 tabIndex="2"className={`${base}__services__wrapper__service`}>
-            Fees and Credits
+          <p className={`${base}__services__wrapper__arrow`}>&#8592;</p>
+          <h3
+            tabIndex="2"
+            className={`${base}__services__wrapper__service`}
+            onBlur={() => changeService("")}
+            onFocus={() => changeService("CSSS")}
+            onMouseOver={() => changeService("CSSS")}
+            onMouseLeave={() => changeService("")}
+          >
+            CSSS
           </h3>
         </div>
         <div className={`${base}__services__wrapper`}>
           <p className={`${base}__services__wrapper__arrow`}>&#8592;</p>
-          <h3 tabIndex="2"className={`${base}__services__wrapper__service`} onFocus={()=>changeService("Insurance")} onMouseOver={()=>changeService("Insurance")} onMouseLeave={()=>changeService("")}>Insurance</h3>
+          <h3
+            tabIndex="2"
+            className={`${base}__services__wrapper__service`}
+            onBlur={() => changeService("")}
+            onFocus={() => changeService("Insurance")}
+            onMouseOver={() => changeService("Insurance")}
+            onMouseLeave={() => changeService("")}
+          >
+            Insurance
+          </h3>
         </div>
         <div className={`${base}__services__wrapper`}>
           <p className={`${base}__services__wrapper__arrow`}>&#8592;</p>
-          <h3 tabIndex="2"className={`${base}__services__wrapper__service`} onFocus={()=>changeService("Donations")} onMouseOver={()=>changeService("Donations")} onMouseLeave={()=>changeService("")}>Donations</h3>
+          <h3
+            tabIndex="2"
+            className={`${base}__services__wrapper__service`}
+            onBlur={() => changeService("")}
+            onFocus={() => changeService("Donations")}
+            onMouseOver={() => changeService("Donations")}
+            onMouseLeave={() => changeService("")}
+          >
+            Donations
+          </h3>
         </div>
         <div className={`${base}__services__wrapper`}>
           <p className={`${base}__services__wrapper__arrow`}>&#8592;</p>
-          <h3 tabIndex="2"className={`${base}__services__wrapper__service`} onFocus={()=>changeService("Ecologic")} onMouseOver={()=>changeService("Ecologic")} onMouseLeave={()=>changeService("")}> Ecologic</h3>
+          <h3
+            tabIndex="2"
+            className={`${base}__services__wrapper__service`}
+            onBlur={() => changeService("")}
+            onFocus={() => changeService("Ecologic")}
+            onMouseOver={() => changeService("Ecologic")}
+            onMouseLeave={() => changeService("")}
+          >
+            {" "}
+            Ecologic
+          </h3>
         </div>
         <div className={`${base}__services__wrapper`}>
           <p className={`${base}__services__wrapper__arrow`}>&#8592;</p>
-          <h3 tabIndex="2"className={`${base}__services__wrapper__service`} onFocus={()=>changeService("Education")} onMouseOver={()=>changeService("Education")} onMouseLeave={()=>changeService("")}>Education</h3>
+          <h3
+            tabIndex="2"
+            className={`${base}__services__wrapper__service`}
+            onBlur={() => changeService("")}
+            onFocus={() => changeService("Education")}
+            onMouseOver={() => changeService("Education")}
+            onMouseLeave={() => changeService("")}
+          >
+            Education
+          </h3>
         </div>
         <div className={`${base}__services__wrapper`}>
           <p className={`${base}__services__wrapper__arrow`}>&#8592;</p>
-          <h3 tabIndex="2"className={`${base}__services__wrapper__service`} onFocus={()=>changeService("Others")} onMouseOver={()=>changeService("Others")} onMouseLeave={()=>changeService("")}>Others</h3>
+          <h3
+            tabIndex="2"
+            className={`${base}__services__wrapper__service`}
+            onBlur={() => changeService("")}
+            onFocus={() => changeService("Others")}
+            onMouseOver={() => changeService("Others")}
+            onMouseLeave={() => changeService("")}
+          >
+            Others
+          </h3>
         </div>
       </div>
     </div>

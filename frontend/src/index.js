@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./index.scss";
 import App from "./App";
 import ScrollToTop from "./utils/ScrollToTop";
@@ -23,17 +23,19 @@ root.render(
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/home" element={<App />}>
-             <Route path="dashboard" element={<Dashboard />} />
+          <Route path="/bank" element={<App />}>
+            <Route path="dashboard" element={<Dashboard />} />
             <Route path="addMoney" element={<AddMoney />} />
             <Route path="moneyTransfer" element={<MoneyTransfer />} />
             <Route path="services" element={<Services />} />
             <Route path="accountHistory" element={<AccountHistory />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="*" element={<Navigate to="/bank/dashboard" />} />
           </Route>
           <Route path="/login" element={<Login />} />
-         
-          <Route path="/create" element={<CreateAccount/>} />
+
+          <Route path="/create" element={<CreateAccount />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
     </MainProvider>

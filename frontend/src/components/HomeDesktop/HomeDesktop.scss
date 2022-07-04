@@ -28,12 +28,6 @@
         width: calc(100vw - 15rem);
         margin-left: 15rem;
     }
-    &--last{
-        @include section;
-        height: 100vh;
-        width: calc(50vw - 10rem);
-        
-    }
     
     }
     
