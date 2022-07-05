@@ -46,6 +46,8 @@
       border-radius: 2rem;
       background-color: $main-color;
       color: $second-color;
+      font-weight: 700;
+      font-size: large;
       box-shadow: rgba(0, 0, 0, 0.2) 0rem 3.75rem 2.5rem -0.4375rem;
       transition: all ease-in-out 300ms;
       @media (min-width: $mobile) {
@@ -208,6 +210,8 @@
           border: none;
           background-color: $second-color;
           width: 50%;
+          font-weight: 700;
+          font-size: large;
           height: 3rem;
           transition: all ease-in-out 300ms;
           @media (min-width: $mobile) {

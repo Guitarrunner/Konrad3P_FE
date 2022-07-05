@@ -17,7 +17,12 @@ function AddMoney(){
               value="credit"
           }
       }
-      
+      if (key === "amount") {
+        value = value.replace(",", "");
+        value = value.replace("$", "");
+        value = value.replace("₡", "");
+        value = parseInt(value);
+      }
       temp[key] = value;
       setData(temp);
     };
@@ -66,6 +71,59 @@ function AddMoney(){
       }
       
     };
+
+    function formatNumber(n) {
+      return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
+    
+    
+    function formatCurrency(input, blur) {
+      let input_val = input.value;
+      
+      if (input_val === "") { return; }
+      
+      if (input_val.indexOf(".") >= 0) {
+    
+        let decimal_pos = input_val.indexOf(".");
+    
+        let left_side = input_val.substring(0, decimal_pos);
+        let right_side = input_val.substring(decimal_pos);
+    
+        left_side = formatNumber(left_side);
+    
+        right_side = formatNumber(right_side);
+        
+        if (blur === "blur") {
+          right_side += "00";
+        }
+        
+        right_side = right_side.substring(0, 2);
+        if (data.type === "US"){
+          input_val = "$" + left_side + "." + right_side;
+        }
+        else{
+          input_val = "₡" + left_side + "." + right_side;
+        }
+        
+    
+      } else {
+        input_val = formatNumber(input_val);
+        if (data.type === "US"){
+          input_val = "$" + input_val;
+        }
+        else{
+          input_val = "₡" + input_val;
+        }
+        
+        
+        if (blur === "blur") {
+          input_val += ".00";
+        }
+      }
+      
+      input.value=(input_val);
+    
+    }
   
     return (
       <main className={`${base}__root`}>
@@ -115,12 +173,17 @@ function AddMoney(){
               </label>
               <input
                 className={`${base}__form__container__input`}
-                type="number"
+                type="text"
                 id="input-amount"
                 text="Amount is required"
+
+              pattern="^\($|₡)\d{1,3}(,\d{3})*(\.\d+)?$"
                 required
+                minLength={1}
                 onInput={(event) => inputHandler("amount", event.target.value)}
                 onKeyDown={(event) => handleblock(event)}
+                onKeyUp={(event)=>formatCurrency(event.target)}
+                onBlur={(event)=>{formatCurrency(event.target)}}
               />
             </div>
             <div className={`${base}__form__container`}>

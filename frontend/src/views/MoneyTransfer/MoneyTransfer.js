@@ -2,74 +2,136 @@ import { useState } from "react";
 
 function MoneyTransfer() {
   const base = "money-transfer";
-  const [data, setData] = useState({ toDebit: "", toCredit: "", amount: "",typeTransaction:"debit",type:""});
-  const [account, setAccount] = useState({})
+  const [data, setData] = useState({
+    toDebit: "",
+    toCredit: "",
+    amount: "",
+    typeTransaction: "debit",
+    type: "",
+  });
+  const [account, setAccount] = useState({});
   const inputHandler = (key, value) => {
     let temp = { ...data };
-    if(key==="toDebit"){
-        let acc = currentUser.accounts.filter(account => account.IBAN === parseInt(value))[0];
-        setAccount(acc);
+    if (key === "toDebit") {
+      let acc = currentUser.accounts.filter(
+        (account) => account.IBAN === parseInt(value)
+      )[0];
+      setAccount(acc);
     }
-    if(key==="typeTransaction"){
-        if(value){
-            value="same"
-        }
-        else{
-            value="debit"
-        }
+    if (key === "typeTransaction") {
+      if (value) {
+        value = "same";
+      } else {
+        value = "debit";
+      }
     }
-    if(key==="toCredit" && value.length===22){
-      temp["type"] = value.substring(0,2)
-      value = value.substring(2)
+    if (key === "toCredit" && value.length === 22) {
+      temp["type"] = value.substring(0, 2);
+      value = value.substring(2);
     }
-    
+    if (key === "amount") {
+      value = value.replace(",", "");
+      value = value.replace("$", "");
+      value = value.replace("₡", "");
+      value = parseInt(value);
+    }
+    console.log(value);
     temp[key] = value;
     setData(temp);
   };
-  const currentUser = JSON.parse(window.localStorage.getItem('user'));
-
+  const currentUser = JSON.parse(window.localStorage.getItem("user"));
 
   const handleblock = (evt) => {
-    if (evt.which === 69 || evt.which === 189 || evt.which === 187 || evt.target.value.length===10) {
+    if (evt.which !== 8 && evt.target.value.length === 10) {
+      evt.preventDefault();
+    }
+    if (evt.which === 69 || evt.which === 189 || evt.which === 187) {
       evt.preventDefault();
     }
   };
 
   const transfer = (event) => {
     event.preventDefault();
-    if (data.toDebit==="" || data.toCredit==="Accounts"){
-      alert("Escoja una cuenta")
-    }
-    else{
-    console.log(data)
-    fetch("http://localhost:3000/transaction/transfer", {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.message==="Transaction done!") {
-          fetch(`http://localhost:3000/user/${currentUser._id}`)
-            .then((res) => res.json())
-            .then((res) => {
-              window.localStorage.setItem('user', JSON.stringify(res.user));
-              window.location.reload(false);
-            })
-            .catch((res) => {
-              console.log(res);
-            });
-        } else {
-          console.log(res);
-        }
+    if (data.toDebit === "" || data.toCredit === "Accounts") {
+      alert("Escoja una cuenta");
+    } else {
+      console.log(data);
+      fetch("http://localhost:3000/transaction/transfer", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(data),
       })
-      .catch((res) => {
-        console.log(res.message);
-      });}
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.message === "Transaction done!") {
+            fetch(`http://localhost:3000/user/${currentUser._id}`)
+              .then((res) => res.json())
+              .then((res) => {
+                window.localStorage.setItem("user", JSON.stringify(res.user));
+                window.location.reload(false);
+              })
+              .catch((res) => {
+                console.log(res);
+              });
+          } else {
+            console.log(res);
+          }
+        })
+        .catch((res) => {
+          console.log(res.message);
+        });
+    }
   };
+
+  function formatNumber(n) {
+    return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  function formatCurrency(input, blur) {
+    let input_val = input.value;
+
+    if (input_val === "") {
+      return;
+    }
+
+    if (input_val.indexOf(".") >= 0) {
+      let decimal_pos = input_val.indexOf(".");
+
+      let left_side = input_val.substring(0, decimal_pos);
+      let right_side = input_val.substring(decimal_pos);
+
+      left_side = formatNumber(left_side);
+
+      right_side = formatNumber(right_side);
+
+      if (blur === "blur") {
+        right_side += "00";
+      }
+
+      right_side = right_side.substring(0, 2);
+      if (account.type === "US") {
+        input_val = "$" + left_side + "." + right_side;
+      } else {
+        input_val = "₡" + left_side + "." + right_side;
+      }
+    } else {
+      input_val = formatNumber(input_val);
+      if (account.type === "US") {
+        input_val = "$" + input_val;
+      } else {
+        input_val = "₡" + input_val;
+      }
+
+      if (blur === "blur") {
+        input_val += ".00";
+      }
+    }
+
+    input.value = input_val;
+  }
 
   return (
     <main className={`${base}__root`}>
@@ -90,19 +152,24 @@ function MoneyTransfer() {
               onInput={(event) => inputHandler("toDebit", event.target.value)}
               required
             >
-                <option value={""}>Accounts</option>
+              <option value={""}>Accounts</option>
               {currentUser.accounts.map((account, i) => {
-                    return <option
-                      key={i}
-                      name={account.name}
-                      value={account.IBAN}
-                    >{`${account.name} - ${account.IBAN}`}</option>;
-                  })}
+                return (
+                  <option
+                    key={i}
+                    name={account.name}
+                    value={account.IBAN}
+                  >{`${account.name} - ${account.IBAN}`}</option>
+                );
+              })}
             </select>
           </div>
-          {(data.toDebit !== "" || data.toDebit==="Accounts")? <p className={`${base}__amount`}>{`Amount Available: ${ parseFloat(account.amount).toFixed(2)}`}</p>:null}
+          {data.toDebit !== "" || data.toDebit === "Accounts" ? (
+            <p className={`${base}__amount`}>{`Amount Available: ${parseFloat(
+              account.amount
+            ).toFixed(2)}`}</p>
+          ) : null}
           <div className={`${base}__form__container`}>
-            
             <label
               htmlFor="input-amount"
               className={`${base}__form__container__label`}
@@ -111,16 +178,23 @@ function MoneyTransfer() {
             </label>
             <input
               className={`${base}__form__container__input`}
-              type="number"
+              type="text"
               id="input-amount"
-              maxLength={8}
+              pattern="^\($|₡)\d{1,3}(,\d{3})*(\.\d+)?$"
               text="Amount is required"
               required
+              minLength={1}
               onInput={(event) => inputHandler("amount", event.target.value)}
-              onKeyDown={(event) => handleblock(event)}
+              onKeyDown={(event) => {
+                handleblock(event);
+              }}
+              onKeyUp={(event) => formatCurrency(event.target)}
+              onBlur={(event) => {
+                formatCurrency(event.target);
+              }}
             />
           </div>
-          
+
           <div className={`${base}__form__container`}>
             <label
               htmlFor="input-credit"
@@ -133,8 +207,8 @@ function MoneyTransfer() {
               type="text"
               id="input-credit"
               pattern="(US|CR)+[0-9]{20}$"
-                title="Use US or CR + IBAN number"
-                maxLength={22}
+              title="Use US or CR + IBAN number"
+              maxLength={22}
               required
               onInput={(event) => inputHandler("toCredit", event.target.value)}
             />
@@ -150,7 +224,9 @@ function MoneyTransfer() {
               className={`${base}__form__container__check`}
               type="checkbox"
               id="check-transfer"
-              onInput={(event) => inputHandler("typeTransaction", event.target.checked)}
+              onInput={(event) =>
+                inputHandler("typeTransaction", event.target.checked)
+              }
             />
           </div>
           <div className={`${base}__form__btn-container`}>
