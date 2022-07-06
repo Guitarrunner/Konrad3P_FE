@@ -7,8 +7,8 @@
     background-color: $second-color;
     z-index: 2;
     position: fixed;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-      rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 16px 32px,
+      rgba(0, 0, 0, 0.15) 0px 12px 6px;
   }
   &__logo {
     width: 10%;
@@ -24,6 +24,10 @@
         height: 90%;
         &--small {
           height: 40%;
+          transition: all ease 500ms;
+          &:hover {
+            transform: translateX(15%);
+          }
         }
       }
     }
@@ -41,6 +45,7 @@
       height: 100%;
       &__img {
         height: 80%;
+        aspect-ratio : 1 / 1;
         border-radius: 50%;
       }
     }
@@ -49,6 +54,9 @@
       align-items: center;
       width: 40%;
       height: 100%;
+      font-size: 2rem;
+      text-decoration: none;
+      color: $main-color;
       margin: 0;
       margin-left: 2rem;
       margin-right: 2rem;
@@ -101,7 +109,7 @@
             border-bottom-left-radius: 1rem;
             border-bottom-right-radius: 1rem;
             border-bottom: 0.03rem solid $main-color;
-            width: 100%;
+            width: calc(100% + 1.5rem);
             justify-content: center;
             align-items: center;
             height: 10rem;

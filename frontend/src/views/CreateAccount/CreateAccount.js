@@ -23,29 +23,31 @@ function CreateAccount() {
   };
 
   const onFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setSrcImg(window.URL.createObjectURL(file));
+    const fileX = event.target.files[0];
+    if (fileX) {
+      setSrcImg(window.URL.createObjectURL(fileX));
     }
     setSelectedFile(event.target.files[0]);
-  };
-
-  const onFileUpload = async () => {
     let file = new FormData();
-    let response;
-    file.append("file", selectedFile);
-    await fetch(`https://bankserverkonrad.herokuapp.com/file`, {
+    file.append("file", event.target.files[0]);
+    file.append("upload_preset", "zigps2rs");
+    fetch("https://api.cloudinary.com/v1_1/daidw64zz/image/upload", {
       method: "POST",
       body: file,
     })
-      .then((res) => res.json())
-      .then((res) => response = res)
-      .catch((err) => console.log(err));
-    return response
+      .then((response) => response.json())
+      .then(async(response) => {
+        console.log("khalkasdfhasdf")
+        console.log(response.url)
+        let temp = { ...data };
+        temp["idPhoto"] = response.url;
+        setData(temp); 
+      })
+      .catch((err) => console.log("Error: ", err));
   };
 
   const handleblock = (evt) => {
-    if(evt.target.value.length ===9 && evt.which !==8){
+    if (evt.target.value.length === 9 && evt.which !== 8) {
       evt.preventDefault();
     }
     if (evt.which === 69 || evt.which === 189 || evt.which === 187) {
@@ -53,17 +55,15 @@ function CreateAccount() {
     }
   };
 
-  const submitInfo = async(event) => {
+  const submitInfo = async (event) => {
     event.preventDefault();
     if (data.password !== refPassword.current.value) {
-        console.log(data)
+      console.log(data);
       alert("Passwords dont match");
     } else {
-      // let photo = await onFileUpload();
-      // await inputHandler("idPhoto",photo.message)
-      await inputHandler("idPhoto","as")
       let temp = { ...data };
-      temp["idPhoto"] = "as";
+      console.log(temp)
+      console.log("asd")
       fetch("https://bankserverkonrad.herokuapp.com/signup", {
         headers: {
           Accept: "application/json",
@@ -74,15 +74,14 @@ function CreateAccount() {
       })
         .then((res) => res.json())
         .then((res) => {
-            if(res.message==="Succesful!"){
-                alert(res.message);                
-                window.localStorage.setItem('user', JSON.stringify(res.user));
-                navigate("/login")
-            }
-            else{
-                alert(res.message);
-                window.location.reload(false);
-            }
+          if (res.message === "Succesful!") {
+            alert(res.message);
+            window.localStorage.setItem("user", JSON.stringify(res.user));
+            navigate("/login");
+          } else {
+            alert(res.message);
+            window.location.reload(false);
+          }
         })
         .catch((res) => {
           alert(res.message);
@@ -105,9 +104,14 @@ function CreateAccount() {
       </div>
       <div className={`${base}__body`}>
         <div className={`${base}__body__container`}>
-          <form className={`${base}__body__container__form`} onSubmit={(event)=>submitInfo(event)}>
+          <form
+            className={`${base}__body__container__form`}
+            onSubmit={(event) => submitInfo(event)}
+          >
             <div className={`${base}__body__container__form__wrapper`}>
-              <label htmlFor="input-full-name" className={`${base}__label`}>Full Name</label>
+              <label htmlFor="input-full-name" className={`${base}__label`}>
+                Full Name
+              </label>
               <input
                 className={`${base}__input`}
                 type="text"
@@ -120,7 +124,9 @@ function CreateAccount() {
               />
             </div>
             <div className={`${base}__body__container__form__wrapper`}>
-              <label htmlFor="input-id" className={`${base}__label`}>ID</label>
+              <label htmlFor="input-id" className={`${base}__label`}>
+                ID
+              </label>
               <input
                 className={`${base}__input`}
                 type="number"
@@ -137,11 +143,13 @@ function CreateAccount() {
               ></input>
             </div>
             <div className={`${base}__body__container__form__wrapper`}>
-              <label htmlFor="input-id-photo" className={`${base}__label`}>ID Photo</label>
+              <label htmlFor="input-id-photo" className={`${base}__label`}>
+                ID Photo
+              </label>
               <input
                 className={`${base}__input--file`}
                 type="file"
-                id="input-id-photo" 
+                id="input-id-photo"
                 accept="image/*"
                 required
                 capture
@@ -158,18 +166,41 @@ function CreateAccount() {
               </div>
             ) : null}
             <div className={`${base}__body__container__form__wrapper`}>
-              <label htmlFor="input-source-income"  className={`${base}__label`}>Source of income</label>
-              <select id="input-source-income" className={`${base}__input`} name="sources" onInput={(event)=>inputHandler("sourceIncome",event.target.value)}>
-                <option name="employed-salaried" value="Employed/Salaried">Employed/Salaried</option>
-                <option name="bussiness-owner" value="Bussiness Owner">Bussiness Owner</option>
-                <option name="self-employed" value="Self Employed">Self Employed</option>
-                <option name="retired" value="Retired">Retired</option>
-                <option name="investor" value="Investor">Investor</option>
-                <option name="other" value="Other">Other</option>
-            </select>
+              <label htmlFor="input-source-income" className={`${base}__label`}>
+                Source of income
+              </label>
+              <select
+                id="input-source-income"
+                className={`${base}__input`}
+                name="sources"
+                onInput={(event) =>
+                  inputHandler("sourceIncome", event.target.value)
+                }
+              >
+                <option name="employed-salaried" value="Employed/Salaried">
+                  Employed/Salaried
+                </option>
+                <option name="bussiness-owner" value="Bussiness Owner">
+                  Bussiness Owner
+                </option>
+                <option name="self-employed" value="Self Employed">
+                  Self Employed
+                </option>
+                <option name="retired" value="Retired">
+                  Retired
+                </option>
+                <option name="investor" value="Investor">
+                  Investor
+                </option>
+                <option name="other" value="Other">
+                  Other
+                </option>
+              </select>
             </div>
             <div className={`${base}__body__container__form__wrapper`}>
-              <label htmlFor="input-email" className={`${base}__label`}>Email</label>
+              <label htmlFor="input-email" className={`${base}__label`}>
+                Email
+              </label>
               <input
                 className={`${base}__input`}
                 type="text"
@@ -184,7 +215,9 @@ function CreateAccount() {
               />
             </div>
             <div className={`${base}__body__container__form__wrapper`}>
-              <label htmlFor="input-password" className={`${base}__label`}>Password</label>
+              <label htmlFor="input-password" className={`${base}__label`}>
+                Password
+              </label>
               <input
                 title="Password must have one upper case letter, one lower case letter, one number and one symbol and at least 8 characters long"
                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,40}$"
@@ -201,8 +234,20 @@ function CreateAccount() {
               />
             </div>
             <div className={`${base}__body__container__form__wrapper`}>
-              <label htmlFor="input-confirm-password" className={`${base}__label`}>Confirm Password</label>
-              <input id="input-confirm-password" ref={refPassword} className={`${base}__input`} type="password" required autoComplete="off"/>
+              <label
+                htmlFor="input-confirm-password"
+                className={`${base}__label`}
+              >
+                Confirm Password
+              </label>
+              <input
+                id="input-confirm-password"
+                ref={refPassword}
+                className={`${base}__input`}
+                type="password"
+                required
+                autoComplete="off"
+              />
             </div>
             <div className={`${base}__btn-container`}>
               <button type="submit" className={`${base}__btn-container__btn`}>
