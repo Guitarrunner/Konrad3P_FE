@@ -41,7 +41,7 @@ function AddMoney(){
       }
       else{
         console.log(data)
-      fetch("http://localhost:3000/transaction/transfer", {
+      fetch("https://bankserverkonrad.herokuapp.com/transaction/transfer", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -52,7 +52,7 @@ function AddMoney(){
         .then((res) => res.json())
         .then((res) => {
           if (res.message==="Transaction done!") {
-            fetch(`http://localhost:3000/user/${currentUser._id}`)
+            fetch(`https://bankserverkonrad.herokuapp.com/user/${currentUser._id}`)
               .then((res) => res.json())
               .then((res) => {
                 window.localStorage.setItem('user', JSON.stringify(res.user));

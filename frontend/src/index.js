@@ -23,8 +23,8 @@ root.render(
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="bank/dashboard" element={<Dashboard />} />
           <Route path="/bank" element={<App />}>
-            <Route path="dashboard" element={<Dashboard />} />
             <Route path="addMoney" element={<AddMoney />} />
             <Route path="moneyTransfer" element={<MoneyTransfer />} />
             <Route path="services" element={<Services />} />
@@ -33,7 +33,6 @@ root.render(
             <Route path="*" element={<Navigate to="/bank/dashboard" />} />
           </Route>
           <Route path="/login" element={<Login />} />
-
           <Route path="/create" element={<CreateAccount />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

@@ -7,7 +7,7 @@ function CreateAccount() {
   const [srcImg, setSrcImg] = useState("#");
   const [data, setData] = useState({
     fullName: "",
-    idPhoto: "",
+    idPhoto: "as",
     idNum: "",
     sourceIncome: "Employed/Salaried",
     email: "",
@@ -34,7 +34,7 @@ function CreateAccount() {
     let file = new FormData();
     let response;
     file.append("file", selectedFile);
-    await fetch(`http://localhost:3000/file`, {
+    await fetch(`https://bankserverkonrad.herokuapp.com/file`, {
       method: "POST",
       body: file,
     })
@@ -59,11 +59,12 @@ function CreateAccount() {
         console.log(data)
       alert("Passwords dont match");
     } else {
-      let photo = await onFileUpload();
-      await inputHandler("idPhoto",photo.message)
+      // let photo = await onFileUpload();
+      // await inputHandler("idPhoto",photo.message)
+      await inputHandler("idPhoto","as")
       let temp = { ...data };
-    temp["idPhoto"] = photo.message;
-      fetch("http://localhost:3000/signup", {
+      temp["idPhoto"] = "as";
+      fetch("https://bankserverkonrad.herokuapp.com/signup", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -76,7 +77,7 @@ function CreateAccount() {
             if(res.message==="Succesful!"){
                 alert(res.message);                
                 window.localStorage.setItem('user', JSON.stringify(res.user));
-                navigate("/bank/dashboard")
+                navigate("/login")
             }
             else{
                 alert(res.message);
@@ -192,6 +193,7 @@ function CreateAccount() {
                 maxLength={40}
                 className={`${base}__input`}
                 type="password"
+                autoComplete="new-password"
                 required
                 onInput={(event) => {
                   inputHandler("password", event.target.value);
@@ -200,7 +202,7 @@ function CreateAccount() {
             </div>
             <div className={`${base}__body__container__form__wrapper`}>
               <label htmlFor="input-confirm-password" className={`${base}__label`}>Confirm Password</label>
-              <input id="input-confirm-password" ref={refPassword} className={`${base}__input`} type="password" required />
+              <input id="input-confirm-password" ref={refPassword} className={`${base}__input`} type="password" required autoComplete="off"/>
             </div>
             <div className={`${base}__btn-container`}>
               <button type="submit" className={`${base}__btn-container__btn`}>

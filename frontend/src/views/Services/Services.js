@@ -24,7 +24,7 @@ function Services() {
     if (data.account === "" || data.account === "Accounts") {
       alert("Escoja una cuenta");
     } else {
-      fetch("http://localhost:3000/transaction/service", {
+      fetch("https://bankserverkonrad.herokuapp.com/transaction/service", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -35,7 +35,7 @@ function Services() {
         .then((res) => res.json())
         .then((res) => {
           if (res.message === "Transaction done!") {
-            fetch(`http://localhost:3000/user/${currentUser._id}`)
+            fetch(`https://bankserverkonrad.herokuapp.com/user/${currentUser._id}`)
               .then((res) => res.json())
               .then((res) => {
                 window.localStorage.setItem("user", JSON.stringify(res.user));

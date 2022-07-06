@@ -29,7 +29,7 @@ function Login() {
 
   const verifyUser = (event) => {
     event.preventDefault();
-    fetch("http://localhost:3000/login", {
+    fetch("https://bankserverkonrad.herokuapp.com/login", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -47,7 +47,7 @@ function Login() {
           document.cookie = `token=${
             res.token
           };expires=${now.toUTCString()};path=/`;
-          fetch(`http://localhost:3000/user/${res.id}`)
+          fetch(`https://bankserverkonrad.herokuapp.com/user/${res.id}`)
             .then((res) => res.json())
             .then((res) => {
               window.localStorage.setItem('user', JSON.stringify(res.user));
