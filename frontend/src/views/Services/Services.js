@@ -1,10 +1,14 @@
 import { useState } from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import prices from "../../assets/prices.json";
+import Loader from "../../components/Loader/Loader";
+import Message from "../../components/Message/Message";
 function Services() {
   const base = "services";
   const [data, setData] = useState({ account: "", type: "" });
   const [account, setAccount] = useState({});
+  const [message, setMessage] = useState({ status: false, message: "" });
+  const [loader, setLoader] = useState(false);
   const inputHandler = (key, value) => {
     if (key === "account") {
       let acc = currentUser.accounts.filter(
@@ -19,6 +23,7 @@ function Services() {
   const currentUser = JSON.parse(window.localStorage.getItem("user"));
 
   const transfer = (event) => {
+    setLoader(true);
     event.preventDefault();
     console.log(data);
     if (data.account === "" || data.account === "Accounts") {
@@ -35,27 +40,42 @@ function Services() {
         .then((res) => res.json())
         .then((res) => {
           if (res.message === "Transaction done!") {
-            fetch(`https://bankserverkonrad.herokuapp.com/user/${currentUser._id}`)
+            fetch(
+              `https://bankserverkonrad.herokuapp.com/user/${currentUser._id}`
+            )
               .then((res) => res.json())
               .then((res) => {
-                window.localStorage.setItem("user", JSON.stringify(res.user));
-                window.location.reload(false);
+                setMessage({ status: true, message: "Succesful" });
+                setTimeout(() => {
+                  window.location.reload(false);
+                }, 1500);
               })
               .catch((res) => {
-                console.log(res);
+                setMessage({ status: true, message: res.message });
+                setTimeout(() => {
+                  window.location.reload(false);
+                }, 1500);
               });
           } else {
-            console.log(res);
+            setMessage({ status: true, message: res.message });
+            setTimeout(() => {
+              window.location.reload(false);
+            }, 1500);
           }
         })
         .catch((res) => {
-          console.log(res.message);
+          setMessage({ status: true, message: res.message });
+          setTimeout(() => {
+            window.location.reload(false);
+          }, 1500);
         });
     }
   };
 
   return (
     <main className={`${base}__root`}>
+      {loader ? <Loader /> : null}
+      {message.status ? <Message message={message.message} /> : null}
       <div className={`${base}__wrapper`}>
         <h1 className={`${base}__title`}>Services</h1>
         {currentUser.services.length === 0 ? (

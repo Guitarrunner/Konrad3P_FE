@@ -6,7 +6,7 @@ function HomeInfo() {
       <div className={`${base}__wrapper`}>
         <div className={`${base}__wrapper__header`}>
           <h1 tabIndex="0" className={`${base}__wrapper__header__title`}>
-            Your money is{" "}
+            Your money is
             <span className="highlight">
               <span className="to-highlight">safe</span>
             </span>

@@ -25,7 +25,6 @@ function HomeDesktop() {
   });
 
   const openMenu = (status) => {
-    console.log("afadf");
     if (status) {
       navbarRef.current.style.left = "0rem";
       menuRef.current.style.display = "none";

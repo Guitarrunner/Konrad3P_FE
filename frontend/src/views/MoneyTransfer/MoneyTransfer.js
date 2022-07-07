@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Loader from "../../components/Loader/Loader";
+import Message from "../../components/Message/Message";
 
 function MoneyTransfer() {
   const base = "money-transfer";
@@ -9,6 +11,8 @@ function MoneyTransfer() {
     typeTransaction: "debit",
     type: "",
   });
+  const [message, setMessage] = useState({ status: false, message: "" });
+  const [loader, setLoader] = useState(false);
   const [account, setAccount] = useState({});
   const inputHandler = (key, value) => {
     let temp = { ...data };
@@ -51,6 +55,7 @@ function MoneyTransfer() {
   };
 
   const transfer = (event) => {
+    setLoader(true);
     event.preventDefault();
     if (data.toDebit === "" || data.toCredit === "Accounts") {
       alert("Escoja una cuenta");
@@ -67,21 +72,35 @@ function MoneyTransfer() {
         .then((res) => res.json())
         .then((res) => {
           if (res.message === "Transaction done!") {
-            fetch(`https://bankserverkonrad.herokuapp.com/user/${currentUser._id}`)
+            fetch(
+              `https://bankserverkonrad.herokuapp.com/user/${currentUser._id}`
+            )
               .then((res) => res.json())
               .then((res) => {
-                window.localStorage.setItem("user", JSON.stringify(res.user));
-                window.location.reload(false);
+                setMessage({ status: true, message: "Succesful" });
+                setTimeout(() => {
+                  window.localStorage.setItem("user", JSON.stringify(res.user));
+                  window.location.reload(false);
+                }, 1500);
               })
               .catch((res) => {
-                console.log(res);
+                setMessage({ status: true, message: res.message });
+                setTimeout(() => {
+                  window.location.reload(false);
+                }, 1500);
               });
           } else {
-            console.log(res);
+            setMessage({ status: true, message: res.message });
+            setTimeout(() => {
+              window.location.reload(false);
+            }, 1500);
           }
         })
         .catch((res) => {
-          console.log(res.message);
+          setMessage({ status: true, message: res.message });
+          setTimeout(() => {
+            window.location.reload(false);
+          }, 1500);
         });
     }
   };
@@ -135,6 +154,8 @@ function MoneyTransfer() {
 
   return (
     <main className={`${base}__root`}>
+      {loader ? <Loader /> : null}
+      {message.status ? <Message message={message.message} /> : null}
       <div className={`${base}__wrapper`}>
         <h1 className={`${base}__title`}>Transfer Money</h1>
         <form className={`${base}__form`} onSubmit={(event) => transfer(event)}>
