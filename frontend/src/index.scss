@@ -2,6 +2,7 @@
 @import "./styles/animations/fadeInLong.scss";
 @import "./styles/animations/fadeOut.scss";
 @import "./styles/animations/fullHeigth.scss";
+@import "./styles/animations/fullHeigthInversed.scss";
 @import "./styles/animations/scrollRight.scss";
 @import "./styles/animations/slideUp.scss";
 @import "./styles/animations/underlineMovement.scss";
@@ -22,7 +23,10 @@
 @import "./components/HomeMobile/HomeMobile.scss";
 @import "./components/HomeServices/HomeServices.scss";
 @import "./components/HomePartners/HomePartners.scss";
+@import "./components/Loader/Loader.scss";
+@import "./components/Message/Message.scss";
 @import "./components/Navbar/Navbar.scss";
+@import "./components/NavbarMobile/NavbarMobile.scss";
 @import "./views/AccountHistory/AccountHistory.scss";
 @import "./views/AddMoney/AddMoney.scss";
 @import "./views/CreateAccount/CreateAccount.scss";

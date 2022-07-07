@@ -1,13 +1,17 @@
-import {useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import eye from "../../assets/view.png";
 import closeEye from "../../assets/private.png";
+import Message from "../../components/Message/Message";
+import Loader from "../../components/Loader/Loader";
 function Login() {
   const base = "login";
   const passwordRef = useRef();
   const eyeRef = useRef();
   const [logInput, setLogInput] = useState({ email: "", password: "" });
   const navigate = useNavigate();
+  const [message, setMessage] = useState({ status: false, message: "" });
+  const [loader, setLoader] = useState(false);
   window.localStorage.clear();
   const inputHandler = (key, value) => {
     let temp = { ...logInput };
@@ -15,7 +19,6 @@ function Login() {
     setLogInput(temp);
   };
 
-  
   const showPassword = (event) => {
     event.preventDefault();
     if (passwordRef.current.type === "password") {
@@ -28,6 +31,7 @@ function Login() {
   };
 
   const verifyUser = (event) => {
+    setLoader(true);
     event.preventDefault();
     fetch("https://bankserverkonrad.herokuapp.com/login", {
       headers: {
@@ -50,22 +54,33 @@ function Login() {
           fetch(`https://bankserverkonrad.herokuapp.com/user/${res.id}`)
             .then((res) => res.json())
             .then((res) => {
-              window.localStorage.setItem('user', JSON.stringify(res.user));
-              navigate("/bank/dashboard");
+              setMessage({ status: true, message: "Succesful" });
+              setTimeout(() => {
+                window.localStorage.setItem("user", JSON.stringify(res.user));
+                navigate("/bank/dashboard");
+              }, 1500);
             })
             .catch((res) => {
               console.log(res);
             });
         } else {
-          console.log(res);
+          setMessage({ status: true, message: "Error on logging" });
+          setTimeout(() => {
+            window.location.reload(false);
+          }, 1500);
         }
       })
       .catch((res) => {
-        console.log(res);
+        setMessage({ status: true, message: "Error on logging" });
+        setTimeout(() => {
+          window.location.reload(false);
+        }, 1500);
       });
   };
   return (
     <main className={`${base}__root`}>
+      {loader ? <Loader /> : null}
+      {message.status ? <Message message={message.message} /> : null}
       <div className={`${base}__wrapper`}>
         <div className={`${base}__section`}>
           <form
@@ -87,6 +102,7 @@ function Login() {
                 onInput={(event) => inputHandler("email", event.target.value)}
                 pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
                 title="Wrong email"
+                autoComplete="username"
                 required
               ></input>
             </div>
@@ -110,6 +126,7 @@ function Login() {
                   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,40}$"
                   minLength={8}
                   maxLength={40}
+                  autoComplete="current-password"
                   required
                 ></input>
                 <button

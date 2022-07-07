@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import next from "../../assets/next.png";
+import Loader from "../../components/Loader/Loader";
+import Message from "../../components/Message/Message";
 function CreateAccount() {
   const base = "create-account";
   const [selectedFile, setSelectedFile] = useState(null);
@@ -13,6 +15,8 @@ function CreateAccount() {
     email: "",
     password: "",
   });
+  const [message, setMessage] = useState({ status: false, message: "" });
+  const [loader, setLoader] = useState(false);
   const refPassword = useRef();
   const navigate = useNavigate();
 
@@ -36,10 +40,10 @@ function CreateAccount() {
       body: file,
     })
       .then((response) => response.json())
-      .then(async(response) => {
+      .then(async (response) => {
         let temp = { ...data };
         temp["idPhoto"] = response.url;
-        setData(temp); 
+        setData(temp);
       })
       .catch((err) => console.log("Error: ", err));
   };
@@ -54,6 +58,7 @@ function CreateAccount() {
   };
 
   const submitInfo = async (event) => {
+    setLoader(true);
     event.preventDefault();
     if (data.password !== refPassword.current.value) {
       console.log(data);
@@ -71,22 +76,31 @@ function CreateAccount() {
         .then((res) => res.json())
         .then((res) => {
           if (res.message === "Succesful!") {
-            alert(res.message);
-            window.localStorage.setItem("user", JSON.stringify(res.user));
-            navigate("/login");
+            setMessage({ status: true, message: "Succesful" });
+            setTimeout(() => {
+              window.localStorage.setItem("user", JSON.stringify(res.user));
+              navigate("/login");
+            }, 1500);
           } else {
-            alert(res.message);
-            window.location.reload(false);
+            setMessage({ status: true, message: res.message });
+            setTimeout(() => {
+              window.location.reload(false);
+            }, 1500);
           }
         })
         .catch((res) => {
-          alert(res.message);
+          setMessage({ status: true, message: res.message });
+          setTimeout(() => {
+            window.location.reload(false);
+          }, 1500);
         });
     }
   };
 
   return (
     <main className={`${base}__root`}>
+      {loader ? <Loader /> : null}
+      {message.status ? <Message message={message.message} /> : null}
       <div className={`${base}__header`}>
         <div className={`${base}__header__container`}>
           <h1 className={`${base}__header__container__title`}>

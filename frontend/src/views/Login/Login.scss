@@ -24,7 +24,6 @@
       color: $main-color;
       @media (min-width: $mobile) {
         margin-top: 3rem;
-        
       }
     }
     &__desc {
@@ -33,7 +32,6 @@
       width: 80%;
       @media (min-width: $mobile) {
         width: auto;
-        
       }
     }
     &__create {
@@ -46,6 +44,7 @@
       border-radius: 2rem;
       background-color: $main-color;
       color: $second-color;
+      text-align: center;
       font-weight: 700;
       font-size: large;
       box-shadow: rgba(0, 0, 0, 0.2) 0rem 3.75rem 2.5rem -0.4375rem;
@@ -73,13 +72,13 @@
     border-top-left-radius: 1rem;
     height: 60%;
     @media (min-width: $mobile) {
-        border-bottom-left-radius: 1rem;
-        border-top-left-radius: 1rem;
-        width: 50%;
-        height: 100%;
+      border-bottom-left-radius: 1rem;
+      border-top-left-radius: 1rem;
+      width: 50%;
+      height: 100%;
     }
-    @media (max-width:$mobile-l) {
-        border-radius: 0;
+    @media (max-width: $mobile-l) {
+      border-radius: 0;
     }
     &--white {
       display: flex;
@@ -96,9 +95,9 @@
         width: 50%;
         height: 100%;
       }
-      @media (max-width:$mobile-l) {
+      @media (max-width: $mobile-l) {
         border-radius: 0;
-    }
+      }
     }
   }
   &__wrapper {
@@ -113,15 +112,15 @@
     flex-direction: column;
     transition: all ease-out 200ms;
     @media (min-width: $mobile) {
-        width: 80%;
-        height: 80%;
-        flex-direction: row;
-        min-width: $mobile;
-        min-height: $mobile;
+      width: 80%;
+      height: 80%;
+      flex-direction: row;
+      min-width: $mobile;
+      min-height: $mobile;
     }
-    @media (max-width:$mobile-l) {
-        height: 100vh;
-        min-height: $mobile-s;
+    @media (max-width: $mobile-l) {
+      height: 100vh;
+      min-height: $mobile-s;
     }
     &__title {
       display: flex;
@@ -183,7 +182,6 @@
             border-radius: 1.5rem;
             padding: 0.5rem;
             width: 100%;
-            
           }
 
           &__view {
@@ -200,9 +198,9 @@
 
       &__submit-container {
         width: 100%;
-        
+
         @media (min-width: $mobile) {
-            height: 20%;
+          height: 20%;
         }
         &__submit {
           box-shadow: rgba(255, 255, 255, 0.2) 0rem 3.75rem 2.5rem -0.4375rem;

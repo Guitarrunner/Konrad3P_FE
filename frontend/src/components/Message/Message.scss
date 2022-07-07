@@ -1,0 +1,33 @@
+.message {
+  &__root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 3;
+  }
+
+  &__container {
+    position: absolute;
+    width: 80%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $second-color;
+    color: $main-color;
+    border-radius: 3rem;
+    animation: slide-up 300ms normal forwards;
+    &__message {
+      width: 100%;
+      text-align: center;
+      font-size: 1.3rem;
+    }
+  }
+}
