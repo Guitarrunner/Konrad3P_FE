@@ -4,8 +4,8 @@
     background-color: $second-color;
     overflow: scroll;
     color: $main-color;
-    transition: all ease-in 300ms;
     @media (min-width: $mobile) {
+      min-height: 47rem;
       height: 100vh;
       overflow: hidden;
     }

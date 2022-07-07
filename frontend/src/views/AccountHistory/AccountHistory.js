@@ -72,13 +72,15 @@ function AccountHistory() {
                     <li key={i} className={`${base}__log-list__box`}>
                       <p className={`${base}__log-list__box__item`}>Type:</p>
                       <p className={`${base}__log-list__box__item`}>
-                        {message.type} 
+                        {message.type}
                       </p>
                       <p className={`${base}__log-list__box__item`}>
-                        Amount of transfer: {parseFloat(message.amount).toFixed(2)}
+                        Amount of transfer:{" "}
+                        {parseFloat(message.amount).toFixed(2)}
                       </p>
-                      <p className={`${base}__log-list__box__item`}>Date: {(message.date).substring(0,16)}</p>
-                      
+                      <p className={`${base}__log-list__box__item`}>
+                        Date: {message.date.substring(0, 16)}
+                      </p>
                     </li>
                   );
                 }
@@ -103,7 +105,7 @@ function AccountHistory() {
                         {parseFloat(message.amount).toFixed(2)}
                       </p>
                       <p className={`${base}__log-list__row__item--date`}>
-                      {(message.date).substring(0,16)}
+                        {message.date.substring(0, 16)}
                       </p>
                     </li>
                   );

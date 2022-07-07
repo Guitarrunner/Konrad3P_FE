@@ -4,15 +4,19 @@
     background-color: $second-color;
     overflow: scroll;
     color: $main-color;
-    transition: all ease-in 300ms;
+    justify-content: flex-start;
     @media (min-width: $mobile) {
+      justify-content: center;
+      min-height: 47rem;
+      margin-top: 2rem;
       height: 100vh;
-      overflow-y: scroll;
+      overflow-y: auto;
       overflow-x: hidden;
     }
   }
   @include transaction;
   &__wrapper {
+    height: calc(100vh - 13rem);
     background-color: $second-color;
     display: flex;
     flex-direction: column;
@@ -78,10 +82,8 @@
         }
       }
     }
-
-    
   }
-  &__btn-container{
+  &__btn-container {
     display: flex;
     height: 5rem;
     max-width: 80%;
@@ -92,7 +94,7 @@
     @media (min-width: $mobile) {
       margin-top: 0rem;
     }
-    &__btn{
+    &__btn {
       width: 2rem;
       height: 2rem;
       border-radius: 1rem;
@@ -100,15 +102,13 @@
       margin-left: 1rem;
       background-color: $second-color;
       color: $main-color;
-      &:focus{
+      &:focus {
         border: 0.03rem solid $main-color;
       }
-
+    }
   }
 }
-
-}
-.on{
+.on {
   width: 2.3rem;
   height: 2.3rem;
   border-radius: 1rem;
@@ -116,7 +116,7 @@
   margin-left: 1rem;
   background-color: $main-color;
   color: $second-color;
-  &:focus{
+  &:focus {
     border: 0.03rem solid $second-color;
   }
 }
