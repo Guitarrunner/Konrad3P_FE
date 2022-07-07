@@ -53,7 +53,7 @@ function Profile() {
               <div className={`${base}__info__other__container`}>
                 <p className={`${base}__info__other__container__email`}>
                   Last Transaction:{" "}
-                  {currentUser.log.slice(-1)[0].date.substring(0, 16)}
+                  {currentUser.log.length===0 ? null :currentUser.log.slice(-1)[0].date.substring(0, 16)}
                 </p>
               </div>
             </div>

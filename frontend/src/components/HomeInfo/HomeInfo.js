@@ -5,9 +5,12 @@ function HomeInfo() {
     <div className={`${base}__root`}>
       <div className={`${base}__wrapper`}>
         <div className={`${base}__wrapper__header`}>
-          <h2 tabIndex="2" className={`${base}__wrapper__header__title`}>
-            Your money is safe
-          </h2>
+          <h1 tabIndex="0" className={`${base}__wrapper__header__title`}>
+            Your money is{" "}
+            <span className="highlight">
+              <span className="to-highlight">safe</span>
+            </span>
+          </h1>
           <p className={`${base}__wrapper__header__description`}>
             By driving responsible growth, we deliver returns to our clients and
             shareholders and help address society’s biggest challenges
@@ -18,17 +21,17 @@ function HomeInfo() {
             <div className={`${base}__info-container`}>
               <div className={`${base}__info-container__wrapper`}>
                 <p
-                  tabIndex="2"
+                  tabIndex="0"
                   className={`${base}__info-container__wrapper__tag`}
                 >
                   1
                 </p>
-                <h3 className={`${base}__info-container__wrapper__title`}>
+                <h2 className={`${base}__info-container__wrapper__title`}>
                   We have solutions for every need!
-                </h3>
+                </h2>
               </div>
               <p
-                tabIndex="2"
+                tabIndex="0"
                 className={`${base}__info-container__description`}
               >
                 We manage to have all your services in one place, pass money
@@ -39,17 +42,17 @@ function HomeInfo() {
             <div className={`${base}__info-container`}>
               <div className={`${base}__info-container__wrapper`}>
                 <p
-                  tabIndex="2"
+                  tabIndex="0"
                   className={`${base}__info-container__wrapper__tag`}
                 >
                   2
                 </p>
-                <h3 className={`${base}__info-container__wrapper__title`}>
+                <h2 className={`${base}__info-container__wrapper__title`}>
                   Fueling economic growth through jobs and skills development
-                </h3>
+                </h2>
               </div>
               <p
-                tabIndex="2"
+                tabIndex="0"
                 className={`${base}__info-container__description`}
               >
                 As a family, we foucs on deliver new oppportunies for your
@@ -61,17 +64,17 @@ function HomeInfo() {
             <div className={`${base}__info-container`}>
               <div className={`${base}__info-container__wrapper`}>
                 <p
-                  tabIndex="2"
+                  tabIndex="0"
                   className={`${base}__info-container__wrapper__tag`}
                 >
                   3
                 </p>
-                <h3 className={`${base}__info-container__wrapper__title`}>
+                <h2 className={`${base}__info-container__wrapper__title`}>
                   Make your dream house
-                </h3>
+                </h2>
               </div>
               <p
-                tabIndex="2"
+                tabIndex="0"
                 className={`${base}__info-container__description`}
               >
                 We are delivering on our purpose to help make financial lives
@@ -81,29 +84,35 @@ function HomeInfo() {
             <div className={`${base}__info-container`}>
               <div className={`${base}__info-container__wrapper`}>
                 <p
-                  tabIndex="2"
+                  tabIndex="0"
                   className={`${base}__info-container__wrapper__tag`}
                 >
                   4
                 </p>
-                <h3 className={`${base}__info-container__wrapper__title`}>
+                <h2 className={`${base}__info-container__wrapper__title`}>
                   Is time to step up and learn about finance
-                </h3>
+                </h2>
               </div>
               <p
-                tabIndex="2"
+                tabIndex="0"
                 className={`${base}__info-container__description`}
               >
                 We are delivering on our purpose to help make financial lives
                 better through our focus on responsible growth
               </p>
             </div>
-          </div><div className={`${base}__wrapper__next`}>
-                <HashLink to="#hero" smooth className={`${base}__wrapper__next__btn`}>&#8592;</HashLink>
-            </div>
-      </div>
+          </div>
+          <div className={`${base}__wrapper__next`}>
+            <HashLink
+              to="#hero"
+              smooth
+              className={`${base}__wrapper__next__btn`}
+            >
+              &#8592;
+            </HashLink>
+          </div>
         </div>
-        
+      </div>
     </div>
   );
 }

@@ -1,103 +1,125 @@
-.header-desktop{
-    &__root{
-        background-color: $main-color;
-        color: $second-color;
-        position: fixed;
-        display: flex;
-        justify-content: center;
-        height: 100vh;
-        width: 15rem;
-        z-index:10;
-        left: 0;
-        border-right: 0.01rem solid $second-color;
-        animation: fade-in 500ms forwards normal;
-        min-height: 20rem;
-        transition: all ease-in-out 500ms;
-        box-shadow: 0 0 0.125rem #fff, 0 0 0.625rem #fff, 0 0 1.25rem #0ba9ca, 0 0 1.875rem #0ba9ca;
-           
+.header-desktop {
+  &__root {
+    background-color: $second-color;
+    color: $main-color;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 15rem;
+    z-index: 10;
+    left: -15rem;
+    border-right: 0.01rem solid $second-color;
+    animation: fade-in 500ms forwards normal;
+    min-height: 20rem;
+    transition: all ease-in-out 500ms;
+    box-shadow: 0 0 0.125rem $main-color, 0 0 0.625rem $main-color,
+      0 0 1.25rem #0ba9ca, 0 0 1.875rem #0ba9ca;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+    &__title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 8%;
+      text-align: center;
+      width: 100%;
+      font-weight: 300;
+      font-size: 2rem;
     }
-    &__container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 90%;
-        height: 100%;
-        &__title{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 8%;
-            text-align: center;
-            width: 100%;
-            font-weight: 300;
-            font-size: 2rem
-        }
-        &__list{
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            height: 74%;
-            width: 100%;
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
-        &__button{
-            height: 8%;
-            width: 100%;
-            display: flex;
-            margin-bottom: 0;
-            justify-content: center;
-            align-items: center;
-            &__log{
-                height: 40%;
-                width: fit-content;
-                font-size: x-large;
-                text-transform: uppercase;
-                text-decoration: none;
-                color: $second-color;
-                text-align: center;
-                padding: 0.5rem;
-                border-radius: 0.5rem;
-                transition: all ease-in 300ms ;
-                &:hover{
-                    background-color: $second-color;
-                    color: $main-color;
-                }
-                &:focus{
-                    background-color: $second-color;
-                    color: $main-color;
-                }
-            }
-        }
+    &__list {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      height: 74%;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      list-style: none;
     }
+    &__button {
+      height: 8%;
+      width: 100%;
+      display: flex;
+      margin-bottom: 0;
+      justify-content: center;
+      align-items: center;
+      &__log {
+        height: 40%;
+        width: fit-content;
+        font-size: x-large;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $main-color;
+        text-align: center;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: all ease-in 300ms;
+        &:hover {
+          background-color: $main-color;
+          color: $second-color;
+        }
+        &:focus {
+          background-color: $main-color;
+          color: $second-color;
+        }
+      }
+    }
+  }
 
-    &__element{
-        width: 70%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-bottom: calc(0.5rem + 0.1rem);
-        &__link{
-            margin: 0.01rem;
-            display: inline-block;
-            width: fit-content;
-            border: 0.03rem solid transparent;
-            font-size: large;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: $second-color;
-            position: relative;
-            &:focus{
-                border: 0.03rem solid white;
-            }
-            &::before{
-                @include underline-movement;
-            }
-            &:hover::before{
-                width: 100%;
-            }
+  &__element {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: calc(0.5rem + 0.1rem);
+    &__link {
+      margin: 0.01rem;
+      display: inline-block;
+      width: fit-content;
+      border: 0.03rem solid transparent;
+      font-size: large;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $main-color;
+      position: relative;
+      &--button {
+        margin: 0.01rem;
+        margin-top: 1rem;
+        width: 100%;
+        border: 0.03rem solid transparent;
+        border-top: 0.03rem solid $main-color;
+        padding-top: 1rem;
+        font-size: large;
+        text-transform: uppercase;
+        text-decoration: none;
+        background-color: transparent;
+        color: $main-color;
+        position: relative;
+        &:focus {
+          border: 0.03rem solid $main-color;
         }
+        &::before {
+          @include underline-movement;
+        }
+        &:hover::before {
+          width: 100%;
+        }
+      }
+      &:focus {
+        border: 0.03rem solid $main-color;
+      }
+      &::before {
+        @include underline-movement;
+      }
+      &:hover::before {
+        width: 100%;
+      }
     }
-
+  }
 }

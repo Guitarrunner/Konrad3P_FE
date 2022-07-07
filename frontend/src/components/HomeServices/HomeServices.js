@@ -6,6 +6,7 @@ function HomeServices() {
   const [animate, setAnimate] = useState({ animation: false, services: "" });
 
   const changeService = (service) => {
+    console.log("ds");
     if (animate.animation) {
       setAnimate({ animation: false, services: "" });
     } else {
@@ -23,37 +24,37 @@ function HomeServices() {
     <div className={`${base}__root`}>
       <div className={`${base}__services`}>
         <div className={`${base}__services__wrapper`}>
-          <h3 tabIndex="2" className={`${base}__services__wrapper__service`}>
+          <h2 tabIndex="0" className={`${base}__services__wrapper__service`}>
             Fees and Credits
-          </h3>
+          </h2>
         </div>
 
         <div className={`${base}__services__wrapper`}>
-          <h3 tabIndex="2" className={`${base}__services__wrapper__service`}>
+          <h2 tabIndex="0" className={`${base}__services__wrapper__service`}>
             ARESEP
-          </h3>
+          </h2>
         </div>
 
         <div className={`${base}__services__wrapper`}>
-          <h3 tabIndex="2" className={`${base}__services__wrapper__service`}>
+          <h2 tabIndex="0" className={`${base}__services__wrapper__service`}>
             Security companies
-          </h3>
+          </h2>
         </div>
 
         <div className={`${base}__services__wrapper`}>
-          <h3 tabIndex="2" className={`${base}__services__wrapper__service`}>
+          <h2 tabIndex="0" className={`${base}__services__wrapper__service`}>
             Billing
-          </h3>
+          </h2>
         </div>
 
         <div className={`${base}__services__wrapper`}>
-          <h3 tabIndex="2" className={`${base}__services__wrapper__service`}>
+          <h2 tabIndex="0" className={`${base}__services__wrapper__service`}>
             Professional Colleges
-          </h3>
+          </h2>
         </div>
         <div className={`${base}__services__wrapper`}>
-          <h3
-            tabIndex="2"
+          <h2
+            tabIndex="0"
             className={`${base}__services__wrapper__service`}
             onBlur={() => changeService("")}
             onFocus={() => changeService("Public Services")}
@@ -61,14 +62,14 @@ function HomeServices() {
             onMouseLeave={() => changeService("")}
           >
             Public Services
-          </h3>
+          </h2>
           <p className={`${base}__services__wrapper__arrow`}>&#8594;</p>
         </div>
       </div>
       <div className={`${base}__center`}>
-        <h2 tabIndex="2" className={`${base}__center__title`}>
+        <h1 tabIndex="0" className={`${base}__center__title`}>
           We have +40 services for your convenience
-        </h2>
+        </h1>
         <div className={`${base}__center__services`}>
           {!animate.animation ? (
             <div className={`${base}__center__services__box`}>
@@ -90,8 +91,8 @@ function HomeServices() {
       <div className={`${base}__services`}>
         <div className={`${base}__services__wrapper`}>
           <p className={`${base}__services__wrapper__arrow`}>&#8592;</p>
-          <h3
-            tabIndex="2"
+          <h2
+            tabIndex="0"
             className={`${base}__services__wrapper__service`}
             onBlur={() => changeService("")}
             onFocus={() => changeService("CSSS")}
@@ -99,12 +100,12 @@ function HomeServices() {
             onMouseLeave={() => changeService("")}
           >
             CSSS
-          </h3>
+          </h2>
         </div>
         <div className={`${base}__services__wrapper`}>
           <p className={`${base}__services__wrapper__arrow`}>&#8592;</p>
-          <h3
-            tabIndex="2"
+          <h2
+            tabIndex="0"
             className={`${base}__services__wrapper__service`}
             onBlur={() => changeService("")}
             onFocus={() => changeService("Insurance")}
@@ -112,12 +113,12 @@ function HomeServices() {
             onMouseLeave={() => changeService("")}
           >
             Insurance
-          </h3>
+          </h2>
         </div>
         <div className={`${base}__services__wrapper`}>
           <p className={`${base}__services__wrapper__arrow`}>&#8592;</p>
-          <h3
-            tabIndex="2"
+          <h2
+            tabIndex="0"
             className={`${base}__services__wrapper__service`}
             onBlur={() => changeService("")}
             onFocus={() => changeService("Donations")}
@@ -125,12 +126,12 @@ function HomeServices() {
             onMouseLeave={() => changeService("")}
           >
             Donations
-          </h3>
+          </h2>
         </div>
         <div className={`${base}__services__wrapper`}>
           <p className={`${base}__services__wrapper__arrow`}>&#8592;</p>
-          <h3
-            tabIndex="2"
+          <h2
+            tabIndex="0"
             className={`${base}__services__wrapper__service`}
             onBlur={() => changeService("")}
             onFocus={() => changeService("Ecologic")}
@@ -139,12 +140,12 @@ function HomeServices() {
           >
             {" "}
             Ecologic
-          </h3>
+          </h2>
         </div>
         <div className={`${base}__services__wrapper`}>
           <p className={`${base}__services__wrapper__arrow`}>&#8592;</p>
-          <h3
-            tabIndex="2"
+          <h2
+            tabIndex="0"
             className={`${base}__services__wrapper__service`}
             onBlur={() => changeService("")}
             onFocus={() => changeService("Education")}
@@ -152,12 +153,12 @@ function HomeServices() {
             onMouseLeave={() => changeService("")}
           >
             Education
-          </h3>
+          </h2>
         </div>
         <div className={`${base}__services__wrapper`}>
           <p className={`${base}__services__wrapper__arrow`}>&#8592;</p>
-          <h3
-            tabIndex="2"
+          <h2
+            tabIndex="0"
             className={`${base}__services__wrapper__service`}
             onBlur={() => changeService("")}
             onFocus={() => changeService("Others")}
@@ -165,7 +166,7 @@ function HomeServices() {
             onMouseLeave={() => changeService("")}
           >
             Others
-          </h3>
+          </h2>
         </div>
       </div>
     </div>

@@ -1,88 +1,89 @@
-.home-services{
-    &__root{
-        width: 90%;
-        height: 90%;
-        display: flex; 
-    }
-    &__service{
-        color: $main-color;
-        width: 40%;
-    }
-    &__services{
-        width: 20%;
-        height: 100%;
+.home-services {
+  &__root {
+    width: 90%;
+    height: 90%;
+    display: flex;
+  }
+  &__service {
+    color: $main-color;
+    width: 40%;
+  }
+  &__services {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__wrapper {
+      height: 12%;
+      border-top: 0.03rem solid white;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      &__service {
         display: flex;
+        align-items: center;
+        width: fit-content;
+        height: 90%;
+        font-size: 1.3rem;
+        z-index: 2;
+      }
+      &__arrow {
+        font-size: 2rem;
+        margin-top: 1rem;
+        width: 10%;
+        margin-right: 1rem;
+        transition: all ease-in-out 300ms;
+        @media (min-width: $mobile) {
+          margin-right: 1.5rem;
+        }
+      }
+    }
+  }
+  &__center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+    &__title {
+      text-align: center;
+      width: fit-content;
+    }
+    &__services {
+      height: 80%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &__box {
+        text-align: center;
+        width: 80%;
+        height: 50%;
+        border-radius: 1rem;
+        border: 0.03rem dotted $second-color;
+        display: flex;
+        font-size: 2rem;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        &__wrapper{
-            height: 12%;
-            border-top: 0.03rem solid white;
-            display: flex;
-            width: 100%;
-            align-items: center;
-            &__service{
-                display: flex;
-                align-items: center;
-                width: fit-content;
-                height: 90%;
-            }
-            &__arrow{
-                font-size: 2rem;
-                margin-top: 1rem;
-                width: 10%;
-                margin-right: 1rem;
-                transition: all ease-in-out 300ms;
-                @media (min-width: $mobile) {
-                    margin-right: 1.5rem;
-                }
-            }
+        transition: all ease-out 500ms;
+        &--services {
+          text-align: center;
+          width: 80%;
+          background-color: $second-color;
+          height: 50%;
+          flex-wrap: wrap;
+          border-radius: 1rem;
+          border: 0.03rem dotted $main-color;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          animation: fade-in 950ms forwards normal;
         }
-        
+      }
     }
-    &__center{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 60%;
-        height: 100%;
-        &__title{
-            text-align: center;
-            width: fit-content;
-        }
-        &__services{
-            height: 80%;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            &__box{
-                text-align: center;
-                width: 80%;
-                height: 50%;
-                border-radius: 1rem;
-                border: 0.03rem dotted $second-color;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                transition: all ease-out 500ms;
-                &--services{
-                    text-align: center;
-                    width: 80%;
-                    background-color: $second-color;
-                    height: 50%;
-                    flex-wrap: wrap;
-                    border-radius: 1rem;
-                    border: 0.03rem dotted $main-color;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    animation: fade-in 950ms forwards normal;
-                }
-            }
-        }
-    }
-    
+  }
 }

@@ -15,13 +15,14 @@
         align-items: center;
         height: 90%;
         width: 90%;
-        justify-content: center;
+        justify-content: space-between;
     }
    
     &__info{
         width: 90%;
         height: 60%;
         display: flex;
+        justify-content: space-between;
         border-radius: 2rem;
         box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
         &__wrapper{
@@ -76,18 +77,16 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        left: -10%;
         top: 0%;
         &__container{
             display: flex;
             justify-content: center;
             flex-direction: column;
             align-items: center;
-            width: 100%;
+            width: 90%;
             height: 100%;
             &__img{
-                width: 90%;
+                width: 100%;
                 border-radius: 3rem;
             }
         }

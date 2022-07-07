@@ -1,34 +1,44 @@
-.home-desktop{
-    &__root{
-        background-color: $main-color;
-        height: 100vh;
-        max-height: 100vh;
-        width: 100vw;
-        color: $second-color;
-        display: flex;
-        flex-direction: row;
-        overflow-x: scroll;
-        overflow-y: scroll;
-        animation: fade-in 600ms normal forwards;
-        scroll-behavior: smooth;
-        
-        @media (min-height: 40rem) {
-            overflow-y: hidden;
-            &::-webkit-scrollbar{
-                display: none;
-            }
-        }
-
+.home-desktop {
+  &__root {
+    background-color: $main-color;
+    height: 100vh;
+    max-height: 100vh;
+    width: 100vw;
+    color: $second-color;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    animation: fade-in 600ms normal forwards;
+    scroll-behavior: smooth;
+    position: relative;
+    @media (min-height: 40rem) {
+      overflow-y: hidden;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
-    &__section{
-        @include section;
-        width: calc(100vw - 15rem);
-    &--first{
-        @include section;
-        width: calc(100vw - 15rem);
-        margin-left: 15rem;
+  }
+  &__menu {
+    display: block;
+    position: fixed;
+    z-index: 3;
+    background-image: url("../../assets/ui.png");
+    background-color: transparent;
+    border: 0.03rem solid transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 3rem;
+    width: 3rem;
+    left: 2rem;
+    top: 1rem;
+  }
+  &__section {
+    @include section;
+    width: calc(100vw);
+    &--first {
+      @include section;
+      width: calc(100vw);
     }
-    
-    }
-    
+  }
 }

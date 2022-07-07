@@ -15,7 +15,7 @@ function HomePartners() {
         <div className={`${base}__wrapper__box`}>
           <div className={`${base}__wrapper__img-container`}>
             <img
-              tabIndex="2"
+              tabIndex="0"
               alt="Partner 1"
               src={mastercard}
               className={`${base}__wrapper__img-container__img`}
@@ -23,7 +23,7 @@ function HomePartners() {
           </div>
           <div className={`${base}__wrapper__img-container`}>
             <img
-              tabIndex="2"
+              tabIndex="0"
               alt="Partner 1"
               src={visa}
               className={`${base}__wrapper__img-container__img`}
@@ -33,7 +33,7 @@ function HomePartners() {
         <div className={`${base}__wrapper__box`}>
           <div className={`${base}__wrapper__img-container`}>
             <img
-              tabIndex="2"
+              tabIndex="0"
               alt="Partner 1"
               src={amex}
               className={`${base}__wrapper__img-container__img`}
@@ -41,7 +41,7 @@ function HomePartners() {
           </div>
           <div className={`${base}__wrapper__img-container`}>
             <img
-              tabIndex="2"
+              tabIndex="0"
               alt="Partner 1"
               src={sinpe}
               className={`${base}__wrapper__img-container__img`}
@@ -51,7 +51,7 @@ function HomePartners() {
         <div className={`${base}__wrapper__box`}>
           <div className={`${base}__wrapper__img-container`}>
             <img
-              tabIndex="2"
+              tabIndex="0"
               alt="Partner 1"
               src={bac}
               className={`${base}__wrapper__img-container__img`}
@@ -59,7 +59,7 @@ function HomePartners() {
           </div>
           <div className={`${base}__wrapper__img-container`}>
             <img
-              tabIndex="2"
+              tabIndex="0"
               alt="Partner 1"
               src={konrad}
               className={`${base}__wrapper__img-container__img`}

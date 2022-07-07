@@ -37,8 +37,6 @@ function CreateAccount() {
     })
       .then((response) => response.json())
       .then(async(response) => {
-        console.log("khalkasdfhasdf")
-        console.log(response.url)
         let temp = { ...data };
         temp["idPhoto"] = response.url;
         setData(temp); 
@@ -62,8 +60,6 @@ function CreateAccount() {
       alert("Passwords dont match");
     } else {
       let temp = { ...data };
-      console.log(temp)
-      console.log("asd")
       fetch("https://bankserverkonrad.herokuapp.com/signup", {
         headers: {
           Accept: "application/json",
