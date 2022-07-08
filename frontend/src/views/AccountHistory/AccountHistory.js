@@ -60,7 +60,7 @@ function AccountHistory() {
                   i < pageElements * currentPag
                 ) {
                   return (
-                    <li key={i} className={`${base}__log-list__box`}>
+                    <li tabIndex={0} key={i} className={`${base}__log-list__box`}>
                       <p className={`${base}__log-list__box__item`}>Type:</p>
                       <p className={`${base}__log-list__box__item`}>
                         {message.type}
@@ -114,6 +114,7 @@ function AccountHistory() {
           if (number === 0) {
             return (
               <button
+              tabIndex={0}
                 key={i}
                 aria-label={`You are in the first page`}
                 ref={firstRef}
@@ -126,6 +127,7 @@ function AccountHistory() {
           } else {
             return (
               <button
+              tabIndex={0}
                 key={i}
                 aria-label={`You are in the page number ${
                   number + 1
