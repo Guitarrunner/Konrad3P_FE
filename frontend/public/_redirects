@@ -1,10 +1,5 @@
-
-/ /index.html
-/login /login
-/create /create
-/bank/dashboard /bank/dashboard
-/bank/addMoney /bank/addMoney
-/bank/moneyTransfer /bank/moneyTransfer
-/bank/accountHistory /bank/accountHistory
-/bank/profile /bank/profile
+/
+/login 
+/create 
+/bank/*
 /* /index.html
