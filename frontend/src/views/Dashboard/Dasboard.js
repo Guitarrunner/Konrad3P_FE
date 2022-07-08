@@ -74,9 +74,9 @@ function Dashboard() {
             })}
           </div>
           <div className={`${base}__wrapper__accounts__log`}>
-            <h2 className={`${base}__wrapper__accounts__log__title`}>
+            <Link to="/bank/accountHistory" className={`${base}__wrapper__accounts__log__title`}>
               Last Transactions
-            </h2>
+            </Link>
             <ul className={`${base}__wrapper__accounts__log__list`}>
               {last2.map((message, i) => {
                 return (

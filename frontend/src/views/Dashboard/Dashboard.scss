@@ -2,34 +2,57 @@
   &__root {
     @include root;
     background-color: $second-color;
-    height: 100vh;
+    min-height: 100vh;
     color: $main-color;
     overflow-x: auto;
     display: block;
+    @media (min-width: $tablet) {
+      height: 100vh;
+    }
   }
   &__wrapper {
     display: flex;
     margin: auto;
     margin-top: 2.5%;
     flex-direction: column;
-    justify-content: space-between;
-    height: 90%;
+    min-height: 100vh;
+    min-height: 90%;
     width: 90%;
+    flex-direction: column;
+    @media (min-width: $tablet) {
+      justify-content: space-between;
+      height: 90%;
+    }
     &__header {
       display: flex;
       align-items: center;
       height: 15%;
       width: 100%;
       justify-content: space-between;
+      flex-direction: column;
+      @media (min-width: $tablet) {
+        flex-direction: row;
+      }
       &__logo-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 10%;
+        width: 100%;
         height: 100%;
+        margin-bottom: 1rem;
+        @media (min-width: $tablet) {
+          margin-bottom: 0rem;
+          width: 10%;
+          height: 100%;
+        }
         &__logo {
-          height: 90%;
-          width: auto;
+          width: 30%;
+          max-width: 5rem;
+          @media (min-width: $tablet) {
+            max-width: 20rem;
+            height: 90%;
+            width: auto;
+          }
         }
       }
       &__container {
@@ -37,29 +60,46 @@
         align-items: center;
         width: 85%;
         height: 100%;
+        overflow-x: scroll;
         padding: 1rem;
         border-radius: 1rem;
         box-shadow: rgba(0, 0, 0, 0.3) 0rem 1.1875rem 2.375rem,
           rgba(0, 0, 0, 0.22) 0rem 0.9375rem 0.75rem;
         animation: slide-up 500ms 0s normal forwards;
+        @media (min-width: $tablet) {
+          overflow-x: hidden;
+        }
         &__img-container {
           display: flex;
           justify-content: center;
           align-items: center;
           width: 15%;
+          min-width: 7rem;
           height: calc(90% - 1rem);
+          @media (min-width: $tablet) {
+            width: 15%;
+          }
           &__img {
-            height: 100%;
+            width: 100%;
             aspect-ratio: 1 / 1;
             border: 0.2rem solid $main-color;
             border-radius: 50%;
+            @media (min-width: $tablet) {
+              height: 100%;
+              width: auto;
+            }
           }
         }
         &__info {
           display: flex;
           flex-direction: column;
           height: 90%;
-          width: 60%;
+          width: 80%;
+          margin-left: 1rem;
+          @media (min-width: $tablet) {
+            width: 60%;
+            margin-left: 0rem;
+          }
           &__name {
             padding: 0;
             margin: 0;
@@ -83,7 +123,11 @@
           align-items: center;
           justify-content: right;
           margin-right: 1rem;
+          margin-left: 3rem;
           height: 100%;
+          @media (min-width: $tablet) {
+            margin-left: 0rem;
+          }
 
           &__btn {
             display: flex;
@@ -103,7 +147,15 @@
       align-items: center;
       height: 55%;
       width: 100%;
+      margin-bottom: 2rem;
+      margin-top: 2rem;
       animation: slide-up 1000ms normal forwards;
+      flex-direction: column;
+      @media (min-width: $tablet) {
+        margin-bottom: 0rem;
+        margin-top: 0rem;
+        flex-direction: row;
+      }
       &__account {
         display: flex;
         padding: 1rem;
@@ -111,9 +163,13 @@
         border-radius: 1rem;
         box-shadow: rgba(0, 0, 0, 0.3) 0rem 1.1875rem 2.375rem,
           rgba(0, 0, 0, 0.22) 0rem 0.9375rem 0.75rem;
-        height: calc(90% - 1rem);
-        width: 62.5%;
+        height: 50vh;
+        width: 90%;
         overflow-x: auto;
+        @media (min-width: $tablet) {
+          width: 62.5%;
+          height: calc(90% - 1rem);
+        }
       }
       &__log {
         padding: 1rem;
@@ -121,8 +177,18 @@
         box-shadow: rgba(0, 0, 0, 0.3) 0rem 1.1875rem 2.375rem,
           rgba(0, 0, 0, 0.22) 0rem 0.9375rem 0.75rem;
         height: calc(90% - 1rem);
-        width: 27.5%;
+        width: 90%;
+        margin-top: 2rem;
+        text-align: center;
+        @media (min-width: $tablet) {
+          text-align: left;
+          width: 27.5%;
+          margin-top: 0rem;
+        }
         &__title {
+          font-size: 1.5rem;
+          text-decoration: none;
+          color: $main-color;
           width: 100%;
           text-align: center;
         }
@@ -159,7 +225,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-
+      flex-direction: column;
+      @media (min-width: $tablet) {
+        flex-direction: row;
+      }
       &__cart {
         text-decoration: none;
         color: $main-color;
@@ -167,15 +236,22 @@
         border-radius: 1rem;
         box-shadow: rgba(0, 0, 0, 0.3) 0rem 1.1875rem 2.375rem,
           rgba(0, 0, 0, 0.22) 0rem 0.9375rem 0.75rem;
-        height: calc(90% - 1rem);
-        width: 30%;
+        height: 20vh;
+        width: 90%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: center;
         cursor: pointer;
         position: relative;
+        margin: 1rem;
         transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+        @media (min-width: $tablet) {
+          width: 30%;
+          margin: 0rem;
+          height: calc(90% - 1rem);
+        }
         &__title {
           font-size: 1.75rem;
         }
@@ -222,7 +298,7 @@
     height: calc(90% - 1rem);
     margin: 1rem;
     text-align: center;
-    min-width: 20rem;
+    min-width: 17rem;
 
     &__name {
       width: 100%;
