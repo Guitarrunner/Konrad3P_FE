@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import prices from "../../assets/prices.json";
 import Loader from "../../components/Loader/Loader";
 import Message from "../../components/Message/Message";
@@ -9,6 +9,7 @@ function Services() {
   const [account, setAccount] = useState({});
   const [message, setMessage] = useState({ status: false, message: "" });
   const [loader, setLoader] = useState(false);
+  const navigate = useNavigate();
   const inputHandler = (key, value) => {
     if (key === "account") {
       let acc = currentUser.accounts.filter(
@@ -47,26 +48,32 @@ function Services() {
               .then((res) => {
                 setMessage({ status: true, message: "Succesful" });
                 setTimeout(() => {
-                  window.location.reload(false);
+                  navigate("/bank/dashboard")
                 }, 1500);
               })
               .catch((res) => {
                 setMessage({ status: true, message: res.message });
                 setTimeout(() => {
-                  window.location.reload(false);
+                  setMessage({ status: false, message: "" });
+                  setLoader(false);
+                  navigate("/bank/services")
                 }, 1500);
               });
           } else {
             setMessage({ status: true, message: res.message });
             setTimeout(() => {
-              window.location.reload(false);
+              setMessage({ status: false, message: "" });
+              setLoader(false);
+              navigate("/bank/services")
             }, 1500);
           }
         })
         .catch((res) => {
           setMessage({ status: true, message: res.message });
           setTimeout(() => {
-            window.location.reload(false);
+            setMessage({ status: false, message: "" });
+            setLoader(false);
+            navigate("/bank/services")
           }, 1500);
         });
     }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import Message from "../../components/Message/Message";
 
@@ -14,6 +15,7 @@ function MoneyTransfer() {
   const [message, setMessage] = useState({ status: false, message: "" });
   const [loader, setLoader] = useState(false);
   const [account, setAccount] = useState({});
+  const navigate = useNavigate()
   const inputHandler = (key, value) => {
     let temp = { ...data };
     if (key === "toDebit") {
@@ -79,26 +81,32 @@ function MoneyTransfer() {
                 setMessage({ status: true, message: "Succesful" });
                 setTimeout(() => {
                   window.localStorage.setItem("user", JSON.stringify(res.user));
-                  window.location.reload(false);
+                  navigate("/bank/dashboard")
                 }, 1500);
               })
               .catch((res) => {
                 setMessage({ status: true, message: res.message });
                 setTimeout(() => {
-                  window.location.reload(false);
+                  setMessage({ status: false, message: "" });
+                  setLoader(false);
+                  navigate("/bank/moneyTransfer")
                 }, 1500);
               });
           } else {
             setMessage({ status: true, message: res.message });
             setTimeout(() => {
-              window.location.reload(false);
+              setMessage({ status: false, message: "" });
+              setLoader(false);
+              navigate("/bank/moneyTransfer")
             }, 1500);
           }
         })
         .catch((res) => {
           setMessage({ status: true, message: res.message });
           setTimeout(() => {
-            window.location.reload(false);
+            setMessage({ status: false, message: "" });
+            setLoader(false);
+            navigate("/bank/moneyTransfer")
           }, 1500);
         });
     }

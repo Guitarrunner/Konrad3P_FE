@@ -63,20 +63,26 @@ function Login() {
             .catch((res) => {
               setMessage({ status: true, message: "Error on logging" });
               setTimeout(() => {
-                window.location.reload(false);
+              setMessage({ status: false, message: "" });
+              setLoader(false);
+              navigate("/login")
               }, 1500);
             });
         } else {
           setMessage({ status: true, message: "Error on logging" });
           setTimeout(() => {
-            window.location.reload(false);
+            setMessage({ status: false, message: "" });
+            setLoader(false);
+            navigate("/login")
           }, 1500);
         }
       })
       .catch((res) => {
         setMessage({ status: true, message: "Error on logging" });
         setTimeout(() => {
-          window.location.reload(false);
+          setMessage({ status: false, message: "" });
+          setLoader(false);
+          navigate("/login")
         }, 1500);
       });
   };

@@ -83,14 +83,18 @@ function CreateAccount() {
           } else {
             setMessage({ status: true, message: res.message });
             setTimeout(() => {
-              window.location.reload(false);
+              setMessage({ status: false, message: "" });
+              setLoader(false);
+              navigate("/create")
             }, 1500);
           }
         })
         .catch((res) => {
           setMessage({ status: true, message: res.message });
           setTimeout(() => {
-            window.location.reload(false);
+            setMessage({ status: false, message: "" });
+            setLoader(false);
+            navigate("/create")
           }, 1500);
         });
     }
