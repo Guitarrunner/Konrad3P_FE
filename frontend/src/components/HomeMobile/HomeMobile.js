@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 function HomeMobile(){
-    return(<div>Hola</div>)
+    return(<Link to="login">Login</Link>)
 }
 
 export default HomeMobile;
