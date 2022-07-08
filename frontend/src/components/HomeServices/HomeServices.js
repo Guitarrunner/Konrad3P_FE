@@ -6,7 +6,6 @@ function HomeServices() {
   const [animate, setAnimate] = useState({ animation: false, services: "" });
 
   const changeService = (service) => {
-    console.log("ds");
     if (animate.animation) {
       setAnimate({ animation: false, services: "" });
     } else {

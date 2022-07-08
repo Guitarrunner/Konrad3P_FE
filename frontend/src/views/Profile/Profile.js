@@ -21,7 +21,7 @@ function Profile() {
               <h1 className={`${base}__info__name__fullName`}>
                 {currentUser.fullName}
               </h1>
-              <p className={`${base}__info__name__id`}>{currentUser.idNum}</p>
+              <p className={`${base}__info__name__id`}>ID:  {currentUser.idNum}</p>
               <p className={`${base}__info__name__id`}>
                 Photo ID: {currentUser.idPhoto.substring(61)}
               </p>

@@ -61,7 +61,10 @@ function Login() {
               }, 1500);
             })
             .catch((res) => {
-              console.log(res);
+              setMessage({ status: true, message: "Error on logging" });
+              setTimeout(() => {
+                window.location.reload(false);
+              }, 1500);
             });
         } else {
           setMessage({ status: true, message: "Error on logging" });

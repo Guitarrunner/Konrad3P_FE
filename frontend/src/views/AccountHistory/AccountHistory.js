@@ -1,29 +1,20 @@
-import { useEffect, useRef, useState } from "react";
-import useBreakPoint from "../../hooks/useBreakPoint";
+import { useContext, useRef, useState } from "react";
+import { MainContext } from "../../context/mainContext";
 
 function AccountHistory() {
   const base = "account-history";
   const currentUser = JSON.parse(window.localStorage.getItem("user"));
-  const [size, setSize] = useState(0);
   const pageElements = 5;
   const [currentPag, setCurrentPag] = useState(1);
   const [lastButton, setLastButton] = useState(null);
   const pages = Math.ceil(currentUser.log.length / pageElements);
-  let device = useBreakPoint(size);
+  const [device,setDevice] = useContext(MainContext)
   const firstRef = useRef();
   const rootRef = useRef();
   let pagesList = [];
   for (let index = 0; index < pages; index++) {
     pagesList.push(index);
   }
-
-  window.onresize = () => {
-    setSize(window.innerWidth);
-  };
-
-  useEffect(() => {
-    setSize(window.innerWidth);
-  }, []);
 
   const changePage = (event, pageNumber) => {
     if (lastButton === null && event.target === firstRef.current) {

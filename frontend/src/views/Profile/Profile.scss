@@ -45,7 +45,9 @@
       height: 100%;
       flex-direction: column;
       margin-top: -2rem;
+      text-align: center;
       @media (min-width: $mobile) {
+        text-align: left;
         margin-top: 0;
         width: 40%;
       }
@@ -79,15 +81,21 @@
         width: auto;
       }
       &__title {
+        margin-left: 3rem;
+        font-size: 1.3rem;
         width: 90%;
         padding-top: 1rem;
         border-top: 0.03rem solid $main-color;
+        @media (min-width: $mobile) {
+          margin-left: 0;
+        }
       }
       &__container {
         height: 20%;
         width: 100%;
         display: flex;
         &__email {
+          width: 100%;
           font-size: 1rem;
         }
         &__edit {

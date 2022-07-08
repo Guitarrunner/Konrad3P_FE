@@ -61,7 +61,6 @@ function CreateAccount() {
     setLoader(true);
     event.preventDefault();
     if (data.password !== refPassword.current.value) {
-      console.log(data);
       alert("Passwords dont match");
     } else {
       let temp = { ...data };
@@ -215,6 +214,7 @@ function CreateAccount() {
                 className={`${base}__input`}
                 type="text"
                 id="input-email"
+                autoComplete="email"
                 required
                 placeholder="john.doe@gmail.com"
                 pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"

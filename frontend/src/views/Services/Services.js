@@ -25,7 +25,6 @@ function Services() {
   const transfer = (event) => {
     setLoader(true);
     event.preventDefault();
-    console.log(data);
     if (data.account === "" || data.account === "Accounts") {
       alert("Escoja una cuenta");
     } else {

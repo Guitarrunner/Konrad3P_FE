@@ -39,7 +39,6 @@ function MoneyTransfer() {
       value = value.replace("₡", "");
       value = parseInt(value);
     }
-    console.log(value);
     temp[key] = value;
     setData(temp);
   };
@@ -60,7 +59,6 @@ function MoneyTransfer() {
     if (data.toDebit === "" || data.toCredit === "Accounts") {
       alert("Escoja una cuenta");
     } else {
-      console.log(data);
       fetch("https://bankserverkonrad.herokuapp.com/transaction/transfer", {
         headers: {
           Accept: "application/json",
