@@ -29,6 +29,7 @@ function Services() {
       alert("Escoja una cuenta");
     } else {
       fetch("https://bankserverkonrad.herokuapp.com/transaction/service", {
+        credentials: "include",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

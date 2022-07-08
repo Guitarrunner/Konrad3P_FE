@@ -60,6 +60,7 @@ function MoneyTransfer() {
       alert("Escoja una cuenta");
     } else {
       fetch("https://bankserverkonrad.herokuapp.com/transaction/transfer", {
+        credentials: "include",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
