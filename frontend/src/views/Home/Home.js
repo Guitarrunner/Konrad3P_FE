@@ -33,7 +33,7 @@ function Home(){
     else{
         device === "mobile"
         ?
-        homeDisplay = <main className={`${base}__root`}> <HomeMobile/></main>
+        homeDisplay = <HomeMobile/>
         :
         homeDisplay = <HomeDesktop/>
     }

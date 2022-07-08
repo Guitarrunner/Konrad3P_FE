@@ -6,10 +6,7 @@ function HomeInfo() {
       <div className={`${base}__wrapper`}>
         <div className={`${base}__wrapper__header`}>
           <h1 tabIndex="0" className={`${base}__wrapper__header__title`}>
-            Your money is
-            <span className="highlight">
-              <span className="to-highlight">safe</span>
-            </span>
+            Your money is safe
           </h1>
           <p className={`${base}__wrapper__header__description`}>
             By driving responsible growth, we deliver returns to our clients and
@@ -77,8 +74,8 @@ function HomeInfo() {
                 tabIndex="0"
                 className={`${base}__info-container__description`}
               >
-                We are delivering on our purpose to help make financial lives
-                better through our focus on responsible growth
+                This is your opportunity to keep growing and make your dreams
+                come true by owning your house in our easy steps.
               </p>
             </div>
             <div className={`${base}__info-container`}>
