@@ -14,7 +14,7 @@ function HomeMobile() {
     <main className={`${base}__root`}>
       <div className={`${base}__wrapper`}>
         <Link to="/login" className={`${base}__login`}><img src={login} alt="login" aria-label="login" className={`${base}__login__img`}/></Link>
-        <div className={`${base}__section`}>
+        <div tabIndex={0} className={`${base}__section`}>
           <img className={`${base}__section__img`} src={home} alt="bank" />
           <h1 className={`${base}__section__title`}>Universal bank</h1>
           <p className={`${base}__section__desc`}>The new bank experience</p>
@@ -23,17 +23,17 @@ function HomeMobile() {
             <span className={`${base}__section__arrow`}>&#8594;</span>
           </p>
         </div>
-        <div className={`${base}__section`}>
+        <div tabIndex={0} className={`${base}__section`}>
           <h2 className={`${base}__section__subtitle`}>Your money is safe</h2>
           <div className={`${base}__section__box`}>
-            <div className={`${base}__section__box__paragraph`}>
+            <div tabIndex={0} className={`${base}__section__box__paragraph`}>
                 <h3>Grow with us</h3>
               <p className={`${base}__section__box__paragraph__text`}>
                 By driving responsible growth, we deliver returns to our clients
                 and shareholders and help address society’s biggest challenges
               </p>
             </div>
-            <div className={`${base}__section__box__paragraph`}>
+            <div tabIndex={0} className={`${base}__section__box__paragraph`}>
             <h3>All services here</h3>
               <p className={`${base}__section__box__paragraph__text`}>
                 {" "}
@@ -42,14 +42,14 @@ function HomeMobile() {
                 page
               </p>
             </div>
-            <div className={`${base}__section__box__paragraph`}>
+            <div tabIndex={0} className={`${base}__section__box__paragraph`}>
             <h3>Financial advice</h3>
               <p className={`${base}__section__box__paragraph__text`}>
                 We are delivering on our purpose to help make financial lives
                 better through our focus on responsible growth
               </p>
             </div>
-            <div className={`${base}__section__box__paragraph`}>
+            <div tabIndex={0} className={`${base}__section__box__paragraph`}>
             <h3>Time to build your house</h3>
               <p className={`${base}__section__box__paragraph__text`}>
                 This is your opportunity to keep growing and make your dreams
@@ -74,10 +74,10 @@ function HomeMobile() {
             })}
           </div>
         </div>
-        <div className={`${base}__section`}>
+        <div className={`${base}__section`} tabIndex={0}>
           <h2 className={`${base}__section__subtitle`}>Our trusted partners</h2>
           <div className={`${base}__section__box`}>
-            <div className={`${base}__section__box__img-container`}>
+            <div tabIndex={0} className={`${base}__section__box__img-container`}>
               <img
                 tabIndex="0"
                 alt="Partner Mastercard"
@@ -85,7 +85,7 @@ function HomeMobile() {
                 className={`${base}__section__box__img-container__img`}
               />
             </div>
-            <div className={`${base}__section__box__img-container`}>
+            <div tabIndex={0} className={`${base}__section__box__img-container`}>
               <img
                 tabIndex="0"
                 alt="Partner Visa"
@@ -93,7 +93,7 @@ function HomeMobile() {
                 className={`${base}__section__box__img-container__img`}
               />
             </div>
-            <div className={`${base}__section__box__img-container`}>
+            <div tabIndex={0} className={`${base}__section__box__img-container`}>
               <img
                 tabIndex="0"
                 alt="Partner Amex"
@@ -101,7 +101,7 @@ function HomeMobile() {
                 className={`${base}__section__box__img-container__img`}
               />
             </div>
-            <div className={`${base}__section__box__img-container`}>
+            <div tabIndex={0} className={`${base}__section__box__img-container`}>
               <img
                 tabIndex="0"
                 alt="Partner Sinpe"
@@ -109,7 +109,7 @@ function HomeMobile() {
                 className={`${base}__section__box__img-container__img`}
               />
             </div>
-            <div className={`${base}__section__box__img-container`}>
+            <div tabIndex={0} className={`${base}__section__box__img-container`}>
               <img
                 tabIndex="0"
                 alt="Partner Bac"
@@ -117,7 +117,7 @@ function HomeMobile() {
                 className={`${base}__section__box__img-container__img`}
               />
             </div>
-            <div className={`${base}__section__box__img-container`}>
+            <div tabIndex={0} className={`${base}__section__box__img-container`}>
               <img
                 tabIndex="0"
                 alt="Partner Konrad"
@@ -129,7 +129,7 @@ function HomeMobile() {
         </div>
 
         <div className={`${base}__section--last`}>
-          <div className={`${base}__section__footer`}>
+          <div tabIndex={0} className={`${base}__section__footer`}>
             <h2 className={`${base}__section__footer__title`}>
               Universal Bank
             </h2>

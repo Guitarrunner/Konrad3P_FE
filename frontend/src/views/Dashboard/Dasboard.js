@@ -8,7 +8,7 @@ function Dashboard() {
   return (
     <main className={`${base}__root`}>
       <div className={`${base}__wrapper`}>
-        <div className={`${base}__wrapper__header`}>
+        <div tabIndex={0} className={`${base}__wrapper__header`}>
           <div className={`${base}__wrapper__header__logo-container`}>
             <img className={`${base}__wrapper__header__logo-container__logo`} src={logo} alt="logo"/>
           </div>
@@ -30,11 +30,11 @@ function Dashboard() {
               >
                 {currentUser.fullName}
               </Link>
-              <small
+              <h1
                 className={`${base}__wrapper__header__container__info__id`}
               >
                 ID: {currentUser.idNum}
-              </small>
+              </h1>
             </div>
             <div className={`${base}__wrapper__header__container__logout`}>
               <Link
@@ -50,7 +50,7 @@ function Dashboard() {
           <div className={`${base}__wrapper__accounts__account`}>
             {currentUser.accounts.map((account, i) => {
               return (
-                <div key={i} className={`${base}__container`}>
+                <div tabIndex={0} key={i} className={`${base}__container`}>
                   <div className={`${base}__container__name`}>
                     <p className={`${base}__container__text`}>{account.name}</p>
                   </div>
@@ -73,14 +73,14 @@ function Dashboard() {
               );
             })}
           </div>
-          <div className={`${base}__wrapper__accounts__log`}>
+          <div tabIndex={0} className={`${base}__wrapper__accounts__log`}>
             <Link to="/bank/accountHistory" className={`${base}__wrapper__accounts__log__title`}>
               Last Transactions
             </Link>
             <ul className={`${base}__wrapper__accounts__log__list`}>
               {last2.map((message, i) => {
                 return (
-                  <li key={i} className={`${base}__wrapper__element`}>
+                  <li tabIndex={0} key={i} className={`${base}__wrapper__element`}>
                     <p className={`${base}__wrapper__element__item`}>
                       Type: {message.type}{" "}
                     </p>
@@ -97,8 +97,8 @@ function Dashboard() {
             </ul>
           </div>
         </div>
-        <div className={`${base}__wrapper__transaction`}>
-          <Link
+        <div tabIndex={0} className={`${base}__wrapper__transaction`}>
+          <Link tabIndex={0}
             to="/bank/addMoney"
             className={`${base}__wrapper__transaction__cart`}
           >
@@ -109,7 +109,7 @@ function Dashboard() {
               Transfer money to your account easily!
             </small>
           </Link>
-          <Link
+          <Link tabIndex={0}
             to="/bank/moneyTransfer"
             className={`${base}__wrapper__transaction__cart`}
           >
@@ -120,7 +120,7 @@ function Dashboard() {
               Send money to different accounts!
             </small>
           </Link>
-          <Link
+          <Link tabIndex={0}
             to="/bank/services"
             className={`${base}__wrapper__transaction__cart`}
           >
